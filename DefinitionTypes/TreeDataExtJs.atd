@@ -1,0 +1,12 @@
+type treeDataExtJs = itemTree list
+
+type itemTree = {
+	id   : string;
+	text : string;
+	leaf : bool;
+	cls  : string;
+	children : itemTree list
+}
+
+
+

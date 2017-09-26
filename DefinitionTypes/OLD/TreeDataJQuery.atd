@@ -1,0 +1,90 @@
+   
+type etat_signature   = [ NonSigne | Signe of (float*string) list (* (date * user)  list*) ] <ocaml repr="classic">
+type etat_coffre      = [ NonProtege | Protege_le_par of (float*string) (* (date * user)  list*) ] <ocaml repr="classic">
+
+type classif_tags_t  = {
+  type_classif  			: string;
+  publique 		        	: bool;
+  valeur 				: string;
+} 
+
+
+type metaData_cwb   = {
+  classif_tags 		 : classif_tags_t list;
+  etat_coffre_fichier    : etat_coffre;
+  etat_signature_fichier : etat_signature;
+  empreinte_shaFichier   : string;
+ }
+
+
+type partage = {
+	nodeidlien 	: string;
+	nodeidoriginal  : string;
+	date_partage 	: string;
+}
+
+type utilisateur_cercle = {
+  prenom_usr 			: string;
+  nom_usr  			: string;
+  login_usr    			: string;
+  listePartages <ocaml mutable> : partage list;
+}
+ 
+
+type cercleInfos  = {
+ nom_cercle    				: string;
+ createur 				: string;
+ date_creation_cercle 			: string;
+ liste_utilisateurs <ocaml mutable>	: utilisateur_cercle list; 
+}
+
+
+type piece = {
+	nom_logique_piece : string;
+	id_piece : string;
+	isInFolder : bool;
+}
+		
+type unepiece = { piece : piece }
+
+type dossierInfos = {
+	titre_dossier_logique 		: string;
+	liste_pieces  			: unepiece list; (*nomPIece * nodeid*)
+}
+
+
+
+
+type releve_information_cercle = cercleInfos list 
+
+
+type msg <ocaml from="MessagesOrdres"> = abstract
+
+   
+type itemFS = {
+  author 		: string;
+  classes  		: string;
+  createPermission 	: bool;
+  created 		: string;
+  creator 		: string;
+  droits 		: string;
+  expanded 		: bool;
+  id  			: string;
+  isFolder 		: bool;
+  locked 		: bool;
+  mimetype 		: string;
+  modified 		: string;
+  parentId 		: string;
+  size 			: int;
+  messages 		: msg list;
+  nomfichier 		: string;
+  version 		: string;
+  versionable 		: bool;
+  infosDossier 		: dossierInfos list;
+  cercles     		: cercleInfos list;
+  etatSignatureCoffre   : metaData_cwb;
+  children 		: itemFS list
+} 
+
+type treeDataJQuery = itemFS list
+

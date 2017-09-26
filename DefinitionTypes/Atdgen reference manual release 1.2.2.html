@@ -1,0 +1,1310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<base href="http://oss.wink.com/atdgen/atdgen-1.2.2/manual/atdgen-manual.html"><div style="background:#fff;border:1px solid #999;margin:-1px -1px 0;padding:0;"><div style="background:#ddd;border:1px solid #999;color:#000;font:13px arial,sans-serif;font-weight:normal;margin:12px;padding:8px;text-align:left">Ceci est le cache Google de <a href="http://oss.wink.com/atdgen/atdgen-1.2.2/manual/atdgen-manual.html" style="text-decoration:underline;color:#00c">http://oss.wink.com/atdgen/atdgen-1.2.2/manual/atdgen-manual.html</a>. Il s&#39;agit d&#39;un instantané de la page telle qu&#39;elle était affichée le 24 janv. 2013 22:51:17 GMT. La <a href="http://oss.wink.com/atdgen/atdgen-1.2.2/manual/atdgen-manual.html" style="text-decoration:underline;color:#00c">page actuelle</a> peut avoir changé depuis cette date. <a href="http://support.google.com/websearch/bin/answer.py?hl=fr&amp;p=cached&amp;answer=1687222" style="text-decoration:underline;color:#00c">En savoir plus</a><br>Astuce : Pour trouver rapidement votre terme de recherche sur cette page, appuyez sur <b>Ctrl+F</b> ou sur <b>⌘+F</b> (Mac), puis utilisez la barre de recherche.<br><br><div style="float:right"><a href="http://webcache.googleusercontent.com/search?q=cache:I-EeAiehOlEJ:oss.wink.com/atdgen/atdgen-1.2.2/manual/atdgen-manual.html&amp;hl=fr&amp;client=firefox-a&amp;hs=ttR&amp;tbo=d&amp;gl=fr&strip=1" style="text-decoration:underline;color:#00c">Version en texte seul</a></div>
+<div>&nbsp;</div></div></div><div style="position:relative">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Atdgen reference manual 
+release 1.2.2
+</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="hevea 1.10">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</STYLE>
+<style type="text/css">
+#page {
+    margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45em;
+    text-align: left;
+}
+</style>
+</HEAD>
+<BODY >
+<div id="page">
+<!--HEVEA command line is: hevea -fix atdgen-manual -->
+<!--CUT DEF section 1 --><TABLE CLASS="title"><TR><TD><H1 CLASS="titlemain">Atdgen reference manual<BR>
+release 1.2.2</H1><H3 CLASS="titlerest">Martin Jambon<BR>
+© 2010&#X2013;2011 MyLife</H3></TD></TR>
+</TABLE><!--TOC section Contents-->
+<H2 CLASS="section"><!--SEC ANCHOR -->Contents</H2><!--SEC END --><UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc1">1  Introduction</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc2">2  Command-line usage</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc3">2.1  Command-line help</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc4">2.2  Atdgen-biniou example</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc5">2.3  Atdgen-json example</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc6">2.4  Validator example</A>
+</LI></UL>
+</LI><LI CLASS="li-toc"><A HREF="#htoc7">3  Default type mapping</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc8">4  ATD Annotations</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc9">4.1  Section <TT>biniou</TT></A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc10">4.1.1  Field <TT>biniou.repr</TT></A>
+</LI></UL>
+</LI><LI CLASS="li-toc"><A HREF="#htoc11">4.2  Section <TT>json</TT></A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc12">4.2.1  Field <TT>json.name</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc13">4.2.2  Field <TT>json.repr</TT></A>
+</LI></UL>
+</LI><LI CLASS="li-toc"><A HREF="#htoc14">4.3  Section <TT>ocaml</TT></A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc15">4.3.1  Field <TT>ocaml.predef</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc16">4.3.2  Field <TT>ocaml.mutable</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc17">4.3.3  Field <TT>ocaml.default</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc18">4.3.4  Field <TT>ocaml.from</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc19">4.3.5  Field <TT>ocaml.module</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc20">4.3.6  Field <TT>ocaml.t</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc21">4.3.7  Field <TT>ocaml.field_prefix</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc22">4.3.8  Field <TT>ocaml.name</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc23">4.3.9  Field <TT>ocaml.repr</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc24">4.3.10  Field <TT>ocaml.validator</TT></A>
+</LI></UL>
+</LI><LI CLASS="li-toc"><A HREF="#htoc25">4.4  Section <TT>ocaml_biniou</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc26">4.5  Section <TT>ocaml_json</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc27">4.6  Section <TT>doc</TT></A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc28">4.6.1  Field <TT>doc.text</TT></A>
+</LI></UL>
+</LI></UL>
+</LI><LI CLASS="li-toc"><A HREF="#htoc29">5  Library</A>
+</LI></UL><!--TOC section Introduction-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc1">1</A>  Introduction</H2><!--SEC END --><P>Atdgen is a command-line program that takes as input type definitions
+in the <A HREF="http://oss.wink.com/atd/">ATD</A> syntax and produces OCaml
+code suitable for data serialization and deserialization.</P><P>Two data formats are currently supported, these are
+<A HREF="http://martin.jambon.free.fr/biniou.html">biniou</A> 
+and <A HREF="http://json.org/">JSON</A>. Atdgen-biniou and Atdgen-json will
+refer to Atdgen used in one context or the other.</P><P>Atdgen was designed with efficiency and durability in mind. Software
+authors are encouraged to use Atdgen directly and to write
+tools that may reuse part of Atdgen&#X2019;s source code.</P><P>Atdgen uses the following packages that were developed in conjunction
+with Atdgen:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>atd</TT>: parser for the syntax of type definitions
+</LI><LI CLASS="li-itemize"><TT>biniou</TT>: parser and printer for biniou, a binary
+extensible data format
+</LI><LI CLASS="li-itemize"><A HREF="http://martin.jambon.free.fr/yojson.html"><TT>yojson</TT></A>:
+parser and printer for JSON, a widespread text-based data format
+</LI></UL><P>Atdgen does not use Camlp4.</P><!--TOC section Command-line usage-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc2">2</A>  Command-line usage</H2><!--SEC END --><!--TOC subsection Command-line help-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc3">2.1</A>  Command-line help</H3><!--SEC END --><PRE CLASS="verbatim">$ atdgen -help
+</PRE><PRE CLASS="verbatim">Generate OCaml code offering:
+  * OCaml type definitions translated from ATD file (-t)
+  * serializers and deserializers for Biniou (-b)
+  * serializers and deserializers for JSON (-j)
+  * record-creating functions supporting default fields (-v)
+  * user-specified data validators (-v)
+
+Recommended usage: ./atdgen (-t|-b|-j|-v|-dep|-list) example.atd
+  -t 
+          Produce files example_t.mli and example_t.ml
+          containing OCaml type definitions derived from example.atd.
+  -b 
+          Produce files example_b.mli and example_b.ml
+          containing OCaml serializers and deserializers for the Biniou
+          data format from the specifications in example.atd.
+  -j 
+          Produce files example_j.mli and example_j.ml
+          containing OCaml serializers and deserializers for the JSON
+          data format from the specifications in example.atd.
+  -v 
+          Produce files example_v.mli and example_v.ml
+          containing OCaml functions for creating records and
+          validators from the specifications in example.atd.
+  -dep 
+          Output Make-compatible dependencies for all possible
+          products of atdgen -t, -b, -j and -v, and exit.
+  -list 
+          Output a space-separated list of all possible products of
+          atdgen -t, -b, -j and -v, and exit.
+  -o [ PREFIX | - ]
+          Use this prefix for the generated files, e.g. 'foo/bar' for
+          foo/bar.ml and foo/bar.mli.
+          `-' designates stdout and produces code of the form
+            struct ... end : sig ... end
+  -biniou 
+          [deprecated in favor of -t and -b]
+          Produce serializers and deserializers for Biniou
+          including OCaml type definitions (default).
+  -json 
+          [deprecated in favor of -t and -j]
+          Produce serializers and deserializers for JSON
+          including OCaml type definitions.
+  -j-std 
+          Convert tuples and variants into standard JSON and
+          refuse to print NaN and infinities (implying -json mode
+          unless another mode is specified).
+  -std-json 
+          [deprecated in favor of -j-std]
+          Same as -j-std.
+  -j-defaults 
+          Output JSON record fields even if their value is known
+          to be the default.
+  -j-strict-fields 
+          Call !Ag_util.Json.unknown_field_handler for every unknown JSON field
+          found in the input instead of simply skipping them.
+          The initial behavior is to raise an exception.
+  -j-custom-fields FUNCTION
+          Call the given function of type (string -&gt; unit) 
+          for every unknown JSON field found in the input
+          instead of simply skipping them.
+          See also -j-strict-fields.
+  -validate 
+          [deprecated in favor of -t and -v]
+          Produce data validators from &lt;ocaml validator="x"&gt; annotations
+          where x is a user-written validator to be applied on a specific
+          node.
+          This is typically used in conjunction with -extend because
+          user-written validators depend on the type definitions.
+  -extend MODULE
+          Assume that all type definitions are provided by the specified
+          module unless otherwise annotated. Type aliases are created
+          for each type, e.g.
+            type t = Module.t
+  -open MODULE1,MODULE2,...
+          List of modules to open (comma-separated or space-separated)
+  -nfd 
+          Do not dump OCaml function definitions
+  -ntd 
+          Do not dump OCaml type definitions
+  -pos-fname FILENAME
+          Source file name to use for error messages
+          (default: input file name)
+  -pos-lnum LINENUM
+          Source line number of the first line of the input (default: 1)
+  -rec 
+          Keep OCaml type definitions mutually recursive
+  -version 
+          Print the version identifier of atdgen and exit.
+  -help  Display this list of options
+  --help  Display this list of options
+</PRE><!--TOC subsection Atdgen-biniou example-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc4">2.2</A>  Atdgen-biniou example</H3><!--SEC END --><PRE CLASS="verbatim">$ atdgen -t example.atd
+$ atdgen -b example.atd
+</PRE><P>Input file <TT>example.atd</TT>:</P><PRE>
+<FONT COLOR="#007F00">type</FONT> profile = {
+  id : string;
+  email : string;
+  ~email_validated : bool;
+  name : string;
+  ?real_name : string option;
+  ~about_me : string list;
+  ?gender : gender option;
+  ?date_of_birth : date option;
+}
+
+<FONT COLOR="#007F00">type</FONT> gender = [ <FONT COLOR="#0033CC">Female</FONT> <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">Male</FONT> ]
+
+<FONT COLOR="#007F00">type</FONT> date = {
+  year : int;
+  month : int;
+  day : int;
+}
+</PRE><P>is used to produce
+files <TT>example_t.mli</TT>,
+<TT>example_t.ml</TT>,
+<TT>example_b.mli</TT> and
+<TT>example_b.ml</TT>.
+This is <TT>example_b.mli</TT>:</P><PRE><FONT COLOR="#990000">(* Auto-generated from "example.atd" *)</FONT>
+
+
+<FONT COLOR="#007F00">type</FONT> date = <FONT COLOR="#0033CC">Example_t</FONT>.date = { year: int; month: int; day: int }
+
+<FONT COLOR="#007F00">type</FONT> gender = <FONT COLOR="#0033CC">Example_t</FONT>.gender
+
+<FONT COLOR="#007F00">type</FONT> profile = <FONT COLOR="#0033CC">Example_t</FONT>.profile = {
+  id: string;
+  email: string;
+  email_validated: bool;
+  name: string;
+  real_name: string option;
+  about_me: string list;
+  gender: gender option;
+  date_of_birth: date option
+}
+
+<FONT COLOR="#990000">(* Writers for type date *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> date_tag : <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag
+  <FONT COLOR="#990000">(** Tag used by the writers for type {!date}.</FONT>
+<FONT COLOR="#990000">      Readers may support more than just this tag. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_untagged_date :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; date -&gt; unit
+  <FONT COLOR="#990000">(** Output an untagged biniou value of type {!date}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_date :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; date -&gt; unit
+  <FONT COLOR="#990000">(** Output a biniou value of type {!date}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_date :
+  ?len:int -&gt; date -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!date} into </FONT>
+<FONT COLOR="#990000">      a biniou string. *)</FONT>
+
+<FONT COLOR="#990000">(* Readers for type date *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> get_date_reader :
+  <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag -&gt; (<FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; date)
+  <FONT COLOR="#990000">(** Return a function that reads an untagged</FONT>
+<FONT COLOR="#990000">      biniou value of type {!date}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_date :
+  <FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; date
+  <FONT COLOR="#990000">(** Input a tagged biniou value of type {!date}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> date_of_string :
+  ?pos:int -&gt; string -&gt; date
+  <FONT COLOR="#990000">(** Deserialize a biniou value of type {!date}.</FONT>
+<FONT COLOR="#990000">      @param pos specifies the position where </FONT>
+<FONT COLOR="#990000">                 reading starts. Default: 0. *)</FONT>
+
+<FONT COLOR="#990000">(* Writers for type gender *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> gender_tag : <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag
+  <FONT COLOR="#990000">(** Tag used by the writers for type {!gender}.</FONT>
+<FONT COLOR="#990000">      Readers may support more than just this tag. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_untagged_gender :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; gender -&gt; unit
+  <FONT COLOR="#990000">(** Output an untagged biniou value of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_gender :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; gender -&gt; unit
+  <FONT COLOR="#990000">(** Output a biniou value of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_gender :
+  ?len:int -&gt; gender -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!gender} into </FONT>
+<FONT COLOR="#990000">      a biniou string. *)</FONT>
+
+<FONT COLOR="#990000">(* Readers for type gender *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> get_gender_reader :
+  <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag -&gt; (<FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; gender)
+  <FONT COLOR="#990000">(** Return a function that reads an untagged</FONT>
+<FONT COLOR="#990000">      biniou value of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_gender :
+  <FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; gender
+  <FONT COLOR="#990000">(** Input a tagged biniou value of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> gender_of_string :
+  ?pos:int -&gt; string -&gt; gender
+  <FONT COLOR="#990000">(** Deserialize a biniou value of type {!gender}.</FONT>
+<FONT COLOR="#990000">      @param pos specifies the position where </FONT>
+<FONT COLOR="#990000">                 reading starts. Default: 0. *)</FONT>
+
+<FONT COLOR="#990000">(* Writers for type profile *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> profile_tag : <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag
+  <FONT COLOR="#990000">(** Tag used by the writers for type {!profile}.</FONT>
+<FONT COLOR="#990000">      Readers may support more than just this tag. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_untagged_profile :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; profile -&gt; unit
+  <FONT COLOR="#990000">(** Output an untagged biniou value of type {!profile}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_profile :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; profile -&gt; unit
+  <FONT COLOR="#990000">(** Output a biniou value of type {!profile}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_profile :
+  ?len:int -&gt; profile -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!profile} into </FONT>
+<FONT COLOR="#990000">      a biniou string. *)</FONT>
+
+<FONT COLOR="#990000">(* Readers for type profile *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> get_profile_reader :
+  <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag -&gt; (<FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; profile)
+  <FONT COLOR="#990000">(** Return a function that reads an untagged</FONT>
+<FONT COLOR="#990000">      biniou value of type {!profile}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_profile :
+  <FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; profile
+  <FONT COLOR="#990000">(** Input a tagged biniou value of type {!profile}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> profile_of_string :
+  ?pos:int -&gt; string -&gt; profile
+  <FONT COLOR="#990000">(** Deserialize a biniou value of type {!profile}.</FONT>
+<FONT COLOR="#990000">      @param pos specifies the position where </FONT>
+<FONT COLOR="#990000">                 reading starts. Default: 0. *)</FONT>
+
+</PRE><P>Module <TT>Example_t</TT> (files <TT>example_t.mli</TT> and
+<TT>example_t.ml</TT>) contains all OCaml type definitions that
+can be used independently from Biniou or JSON.</P><P>For convenience, these definitions are also made available from the 
+<TT>Example_b</TT> module whose interface is shown above.
+Any type name, record field name or variant constructor can be
+referred to using either module. For example, the OCaml
+expressions <TT>((x : Example_t.date) : Example_b.date)</TT>
+and <TT>x.Example_t.year = x.Example_b.year</TT> are both valid.</P><!--TOC subsection Atdgen-json example-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc5">2.3</A>  Atdgen-json example</H3><!--SEC END --><PRE CLASS="verbatim">$ atdgen -t example.atd
+$ atdgen -j example.atd
+</PRE><P>Input file <TT>example.atd</TT>:</P><PRE>
+<FONT COLOR="#007F00">type</FONT> profile = {
+  id : string;
+  email : string;
+  ~email_validated : bool;
+  name : string;
+  ?real_name : string option;
+  ~about_me : string list;
+  ?gender : gender option;
+  ?date_of_birth : date option;
+}
+
+<FONT COLOR="#007F00">type</FONT> gender = [ <FONT COLOR="#0033CC">Female</FONT> <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">Male</FONT> ]
+
+<FONT COLOR="#007F00">type</FONT> date = {
+  year : int;
+  month : int;
+  day : int;
+}
+</PRE><P>is used to produce
+files <TT>example_t.mli</TT>,
+<TT>example_t.ml</TT>,
+<TT>example_j.mli</TT> and
+<TT>example_j.ml</TT>.
+This is <TT>example_j.mli</TT>:</P><PRE><FONT COLOR="#990000">(* Auto-generated from "example.atd" *)</FONT>
+
+
+<FONT COLOR="#007F00">type</FONT> date = <FONT COLOR="#0033CC">Example_t</FONT>.date = { year: int; month: int; day: int }
+
+<FONT COLOR="#007F00">type</FONT> gender = <FONT COLOR="#0033CC">Example_t</FONT>.gender
+
+<FONT COLOR="#007F00">type</FONT> profile = <FONT COLOR="#0033CC">Example_t</FONT>.profile = {
+  id: string;
+  email: string;
+  email_validated: bool;
+  name: string;
+  real_name: string option;
+  about_me: string list;
+  gender: gender option;
+  date_of_birth: date option
+}
+
+<FONT COLOR="#007F00">val</FONT> write_date :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; date -&gt; unit
+  <FONT COLOR="#990000">(** Output a JSON value of type {!date}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_date :
+  ?len:int -&gt; date -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!date}</FONT>
+<FONT COLOR="#990000">      into a JSON string.</FONT>
+<FONT COLOR="#990000">      @param len specifies the initial length </FONT>
+<FONT COLOR="#990000">                 of the buffer used internally.</FONT>
+<FONT COLOR="#990000">                 Default: 1024. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_date :
+  <FONT COLOR="#0033CC">Yojson</FONT>.<FONT COLOR="#0033CC">Safe</FONT>.lexer_state -&gt; <FONT COLOR="#0033CC">Lexing</FONT>.lexbuf -&gt; date
+  <FONT COLOR="#990000">(** Input JSON data of type {!date}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> date_of_string :
+  string -&gt; date
+  <FONT COLOR="#990000">(** Deserialize JSON data of type {!date}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_gender :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; gender -&gt; unit
+  <FONT COLOR="#990000">(** Output a JSON value of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_gender :
+  ?len:int -&gt; gender -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!gender}</FONT>
+<FONT COLOR="#990000">      into a JSON string.</FONT>
+<FONT COLOR="#990000">      @param len specifies the initial length </FONT>
+<FONT COLOR="#990000">                 of the buffer used internally.</FONT>
+<FONT COLOR="#990000">                 Default: 1024. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_gender :
+  <FONT COLOR="#0033CC">Yojson</FONT>.<FONT COLOR="#0033CC">Safe</FONT>.lexer_state -&gt; <FONT COLOR="#0033CC">Lexing</FONT>.lexbuf -&gt; gender
+  <FONT COLOR="#990000">(** Input JSON data of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> gender_of_string :
+  string -&gt; gender
+  <FONT COLOR="#990000">(** Deserialize JSON data of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_profile :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; profile -&gt; unit
+  <FONT COLOR="#990000">(** Output a JSON value of type {!profile}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_profile :
+  ?len:int -&gt; profile -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!profile}</FONT>
+<FONT COLOR="#990000">      into a JSON string.</FONT>
+<FONT COLOR="#990000">      @param len specifies the initial length </FONT>
+<FONT COLOR="#990000">                 of the buffer used internally.</FONT>
+<FONT COLOR="#990000">                 Default: 1024. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_profile :
+  <FONT COLOR="#0033CC">Yojson</FONT>.<FONT COLOR="#0033CC">Safe</FONT>.lexer_state -&gt; <FONT COLOR="#0033CC">Lexing</FONT>.lexbuf -&gt; profile
+  <FONT COLOR="#990000">(** Input JSON data of type {!profile}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> profile_of_string :
+  string -&gt; profile
+  <FONT COLOR="#990000">(** Deserialize JSON data of type {!profile}. *)</FONT>
+
+</PRE><P>Module <TT>Example_t</TT> (files <TT>example_t.mli</TT> and
+<TT>example_t.ml</TT>) contains all OCaml type definitions that
+can be used independently from Biniou or JSON.</P><P>For convenience, these definitions are also made available from the 
+<TT>Example_j</TT> module whose interface is shown above.
+Any type name, record field name or variant constructor can be
+referred to using either module. For example, the OCaml
+expressions <TT>((x : Example_t.date) : Example_j.date)</TT>
+and <TT>x.Example_t.year = x.Example_j.year</TT> are both valid.</P><!--TOC subsection Validator example-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc6">2.4</A>  Validator example</H3><!--SEC END --><PRE CLASS="verbatim">$ atdgen -t example.atd
+$ atdgen -v example.atd
+</PRE><P>Input file <TT>example.atd</TT>:</P><PRE>
+<FONT COLOR="#007F00">type</FONT> month = int &lt;ocaml validator=<FONT COLOR="#AA4444">"fun x -&gt; x &gt;= 1 &amp;&amp; x &lt;= 12"</FONT>&gt;
+<FONT COLOR="#007F00">type</FONT> day = int &lt;ocaml validator=<FONT COLOR="#AA4444">"fun x -&gt; x &gt;= 1 &amp;&amp; x &lt;= 31"</FONT>&gt;
+
+<FONT COLOR="#007F00">type</FONT> date = {
+  year : int;
+  month : month;
+  day : day;
+}
+  &lt;ocaml validator=<FONT COLOR="#AA4444">"Date_util.validate_date"</FONT>&gt;
+</PRE><P>is used to produce
+files <TT>example_t.mli</TT>,
+<TT>example_t.ml</TT>,
+<TT>example_v.mli</TT> and
+<TT>example_v.ml</TT>.
+This is <TT>example_v.ml</TT>, showing how the user-specified
+validators are used:</P><PRE><FONT COLOR="#990000">(* Auto-generated from "example.atd" *)</FONT>
+
+
+<FONT COLOR="#007F00">type</FONT> month = <FONT COLOR="#0033CC">Example_t</FONT>.month
+
+<FONT COLOR="#007F00">type</FONT> day = <FONT COLOR="#0033CC">Example_t</FONT>.day
+
+<FONT COLOR="#007F00">type</FONT> date = <FONT COLOR="#0033CC">Example_t</FONT>.date = { year: int; month: month; day: day }
+
+<FONT COLOR="#007F00">let</FONT> validate_month = (
+  <FONT COLOR="#007F00">fun</FONT> x -&gt; x &gt;= 1 &amp;&amp; x &lt;= 12
+)
+<FONT COLOR="#007F00">let</FONT> validate_day = (
+  <FONT COLOR="#007F00">fun</FONT> x -&gt; x &gt;= 1 &amp;&amp; x &lt;= 31
+)
+<FONT COLOR="#007F00">let</FONT> validate_date = (
+  <FONT COLOR="#007F00">fun</FONT> x -&gt;
+    ( <FONT COLOR="#0033CC">Date_util</FONT>.validate_date ) x &amp;&amp;
+    (
+      validate_month
+    ) x.month
+    &amp;&amp;
+    (
+      validate_day
+    ) x.day
+)
+<FONT COLOR="#007F00">let</FONT> create_date 
+  ~year
+  ~month
+  ~day
+  () =
+  {
+    year = year;
+    month = month;
+    day = day;
+  }
+</PRE><!--TOC section Default type mapping-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc7">3</A>  Default type mapping</H2><!--SEC END --><P>The following table summarizes the default mapping between ATD types and
+OCaml, biniou and JSON data types. For each language more
+representations are available and are detailed in the next section of this
+manual.</P><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD CLASS="hbar" COLSPAN=4></TD></TR>
+<TR><TD ALIGN=left NOWRAP>ATD</TD><TD ALIGN=left NOWRAP>OCaml</TD><TD ALIGN=left NOWRAP>Biniou</TD><TD ALIGN=left NOWRAP>JSON</TD></TR>
+<TR><TD CLASS="hbar" COLSPAN=4></TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>unit</TT></TD><TD ALIGN=left NOWRAP><TT>unit</TT></TD><TD ALIGN=left NOWRAP>unit</TD><TD ALIGN=left NOWRAP>null</TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>bool</TT></TD><TD ALIGN=left NOWRAP><TT>bool</TT></TD><TD ALIGN=left NOWRAP>bool</TD><TD ALIGN=left NOWRAP>boolean</TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>int</TT></TD><TD ALIGN=left NOWRAP><TT>int</TT></TD><TD ALIGN=left NOWRAP>svint</TD><TD ALIGN=left NOWRAP>number (int)</TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>float</TT></TD><TD ALIGN=left NOWRAP><TT>float</TT></TD><TD ALIGN=left NOWRAP>float64</TD><TD ALIGN=left NOWRAP>number (not int)</TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>string</TT></TD><TD ALIGN=left NOWRAP><TT>string</TT></TD><TD ALIGN=left NOWRAP>string</TD><TD ALIGN=left NOWRAP>string</TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>option</TT></TD><TD ALIGN=left NOWRAP><TT>option</TT></TD><TD ALIGN=left NOWRAP>numeric variants (tag 0)</TD><TD ALIGN=left NOWRAP>None/Some variants</TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>list</TT></TD><TD ALIGN=left NOWRAP><TT>list</TT></TD><TD ALIGN=left NOWRAP>array</TD><TD ALIGN=left NOWRAP>array</TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>shared</TT></TD><TD ALIGN=left NOWRAP>no wrapping</TD><TD ALIGN=left NOWRAP>shared</TD><TD ALIGN=left NOWRAP>not implemented</TD></TR>
+<TR><TD ALIGN=left NOWRAP>variants</TD><TD ALIGN=left NOWRAP>polymorphic variants</TD><TD ALIGN=left NOWRAP>regular variants</TD><TD ALIGN=left NOWRAP>variants</TD></TR>
+<TR><TD ALIGN=left NOWRAP>record</TD><TD ALIGN=left NOWRAP>record</TD><TD ALIGN=left NOWRAP>record</TD><TD ALIGN=left NOWRAP>object</TD></TR>
+<TR><TD ALIGN=left NOWRAP>tuple</TD><TD ALIGN=left NOWRAP>tuple</TD><TD ALIGN=left NOWRAP>tuple</TD><TD ALIGN=left NOWRAP>tuple</TD></TR>
+<TR><TD CLASS="hbar" COLSPAN=4></TD></TR>
+</TABLE><P>Notes:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+The JSON null value serves only as the unit value and is
+useful in practice only for instanciating parametrized types with
+&#X201C;nothing&#X201D;. Option types have a distinct representation that does
+not use the null value.
+</LI><LI CLASS="li-itemize">OCaml floats are written to JSON numbers with either a decimal
+point or an exponent such that they are distinguishable from
+ints, even though the JSON standard does not require a distinction
+between the two.
+</LI><LI CLASS="li-itemize">The optional values of record fields denoted in ATD by a
+question mark are unwrapped or omitted in both biniou and JSON.
+</LI><LI CLASS="li-itemize">JSON option values and JSON variants are represented in standard
+JSON (<TT>atdgen -j -j-std</TT>) by a single string e.g. <TT>"None"</TT>
+or a pair in which the 
+first element is the name (constructor) e.g. <TT>["Some", 1234]</TT>.
+Yojson also provides a specific syntax for variants using edgy
+brackets: <TT>&lt;"None"&gt;</TT>, <TT>&lt;"Some": 1234&gt;</TT>.
+</LI><LI CLASS="li-itemize">Biniou field names and variant names other than the option types 
+use the hash of the ATD field or variant name and cannot currently
+be overridden by annotations.
+</LI><LI CLASS="li-itemize">JSON tuples in standard JSON (<TT>atdgen -j -j-std</TT>) use the
+array notation e.g. 
+<TT>["ABC", 123]</TT>.
+Yojson also provides a specific syntax for tuples using parentheses,
+e.g. <TT>("ABC", 123)</TT>.
+</LI><LI CLASS="li-itemize">Types defined as <TT>abstract</TT> are defined in
+another module.
+</LI></UL><!--TOC section ATD Annotations-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc8">4</A>  ATD Annotations</H2><!--SEC END --><!--TOC subsection Section <TT>biniou</TT>-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc9">4.1</A>  Section <TT>biniou</TT><A NAME="biniou"></A></H3><!--SEC END --><!--TOC subsubsection Field <TT>biniou.repr</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc10">4.1.1</A>  Field <TT>biniou.repr</TT><A NAME="biniou.repr"></A></H4><!--SEC END --><!--TOC paragraph Integers-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Integers</H5><!--SEC END --><P><I>Position</I>: after <TT>int</TT> type</P><P><I>Values</I>: <TT>svint</TT> (default), <TT>uvint</TT>, <TT>int8</TT>,
+<TT>int16</TT>, <TT>int32</TT>, <TT>int64</TT></P><P><I>Semantics</I>: specifies an alternate type for representing integers.
+The default type is <TT>svint</TT>.
+The other integers types provided by biniou are
+supported by Atdgen-biniou.
+They have to map to the corresponding OCaml types
+in accordance with the following table:</P><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD CLASS="hbar" COLSPAN=3></TD></TR>
+<TR><TD ALIGN=left NOWRAP>Biniou type</TD><TD ALIGN=left NOWRAP>Supported OCaml type</TD><TD ALIGN=left NOWRAP>OCaml value range</TD></TR>
+<TR><TD CLASS="hbar" COLSPAN=3></TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>svint</TT></TD><TD ALIGN=left NOWRAP><TT>int</TT></TD><TD ALIGN=left NOWRAP><TT>min_int </TT><TT>&#X2026;</TT><TT> max_int</TT></TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>uvint</TT></TD><TD ALIGN=left NOWRAP><TT>int</TT></TD><TD ALIGN=left NOWRAP><TT>0 </TT><TT>&#X2026;</TT><TT> max_int</TT>, <TT>min_int </TT><TT>&#X2026;</TT><TT> -1</TT></TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>int8</TT></TD><TD ALIGN=left NOWRAP><TT>char</TT></TD><TD ALIGN=left NOWRAP><TT>&#X2019;</TT><TT>\</TT><TT>000&#X2019; </TT><TT>&#X2026;</TT><TT> &#X2019;</TT><TT>\</TT><TT>255&#X2019;</TT></TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>int16</TT></TD><TD ALIGN=left NOWRAP><TT>int</TT></TD><TD ALIGN=left NOWRAP><TT>0 </TT><TT>&#X2026;</TT><TT> 65535</TT></TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>int32</TT></TD><TD ALIGN=left NOWRAP><TT>int32</TT></TD><TD ALIGN=left NOWRAP><TT>Int32.min_int </TT><TT>&#X2026;</TT><TT> Int32.max_int</TT></TD></TR>
+<TR><TD ALIGN=left NOWRAP><TT>int64</TT></TD><TD ALIGN=left NOWRAP><TT>int64</TT></TD><TD ALIGN=left NOWRAP><TT>Int64.min_int </TT><TT>&#X2026;</TT><TT> Int64.max_int</TT></TD></TR>
+<TR><TD CLASS="hbar" COLSPAN=3></TD></TR>
+</TABLE><P>In addition to the mapping above, if the OCaml type is <TT>int</TT>,
+any biniou integer type can be read into OCaml data regardless of the
+declared biniou type.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> t = {
+  id : int
+    &lt;ocaml repr=<FONT COLOR="#AA4444">"int64"</FONT>&gt;
+    &lt;biniou repr=<FONT COLOR="#AA4444">"int64"</FONT>&gt;;
+  data : string list;
+}
+</PRE><!--TOC paragraph Arrays and tables-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Arrays and tables</H5><!--SEC END --><P><I>Position</I>: applies to lists of records</P><P><I>Values</I>: <TT>array</TT> (default), <TT>table</TT></P><P><I>Semantics</I>: <TT>table</TT> uses biniou&#X2019;s table format instead of a
+regular array for serializing OCaml data into biniou.
+Both formats are supported for reading into OCaml data
+regardless of the annotation. The table format allows</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> item = {
+  id : int;
+  data : string list;
+}
+
+<FONT COLOR="#007F00">type</FONT> items = item list &lt;biniou repr=<FONT COLOR="#AA4444">"table"</FONT>&gt;
+</PRE><!--TOC subsection Section <TT>json</TT>-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc11">4.2</A>  Section <TT>json</TT><A NAME="json"></A></H3><!--SEC END --><!--TOC subsubsection Field <TT>json.name</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc12">4.2.1</A>  Field <TT>json.name</TT><A NAME="json.name"></A></H4><!--SEC END --><P><I>Position</I>: after field name or variant name</P><P><I>Values</I>: any string making a valid JSON string value</P><P><I>Semantics</I>: specifies an alternate object field name or variant
+name to be used by the JSON representation.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> color = [
+    <FONT COLOR="#0033CC">Black</FONT> &lt;json name=<FONT COLOR="#AA4444">"black"</FONT>&gt;
+  <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">White</FONT> &lt;json name=<FONT COLOR="#AA4444">"white"</FONT>&gt;
+  <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">Grey</FONT> &lt;json name=<FONT COLOR="#AA4444">"grey"</FONT>&gt;
+]
+
+<FONT COLOR="#007F00">type</FONT> profile = {
+  id &lt;json name=<FONT COLOR="#AA4444">"ID"</FONT>&gt; : int;
+  username : string;
+  background_color : color;
+}
+</PRE><P>A valid JSON object of the <TT>profile</TT> type above is:
+</P><PRE CLASS="verbatim">{
+  "ID": 12345678,
+  "username": "kimforever",
+  "background_color": "black"
+}
+</PRE><!--TOC subsubsection Field <TT>json.repr</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc13">4.2.2</A>  Field <TT>json.repr</TT><A NAME="json.repr"></A></H4><!--SEC END --><P><I>Position</I>: after <TT>(string * _) list</TT> type</P><P><I>Values</I>: <TT>object</TT></P><P><I>Semantics</I>: uses JSON&#X2019;s object notation to represent association
+lists.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> counts = (string * int) list &lt;json repr=<FONT COLOR="#AA4444">"object"</FONT>&gt;
+</PRE><P>
+A valid JSON object of the <TT>counts</TT> type above is:
+</P><PRE CLASS="verbatim">{
+  "bob": 3,
+  "john": 1408,
+  "mary": 450987,
+  "peter": 93087
+}
+</PRE><P>Without the annotation <TT>&lt;json repr="object"&gt;</TT>, the data above
+would be represented as:
+</P><PRE CLASS="verbatim">[
+  [ "bob", 3 ],
+  [ "john", 1408 ],
+  [ "mary", 450987 ],
+  [ "peter", 93087 ]
+]
+</PRE><!--TOC subsection Section <TT>ocaml</TT>-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc14">4.3</A>  Section <TT>ocaml</TT><A NAME="ocaml"></A></H3><!--SEC END --><!--TOC subsubsection Field <TT>ocaml.predef</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc15">4.3.1</A>  Field <TT>ocaml.predef</TT><A NAME="ocaml.predef"></A></H4><!--SEC END --><P><I>Position</I>: left-hand side of a type definition, after the type name</P><P><I>Values</I>: none, <TT>true</TT> or <TT>false</TT></P><P><I>Semantics</I>: this flag indicates that the corresponding OCaml
+type definition must be omitted.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#990000">(* Some third-party OCaml code *)</FONT>
+<FONT COLOR="#007F00">type</FONT> message = {
+  from : string;
+  subject : string;
+  body : string;
+}
+</PRE><PRE>
+<FONT COLOR="#990000">(*</FONT>
+<FONT COLOR="#990000">   Our own ATD file used for making message_of_string and</FONT>
+<FONT COLOR="#990000">   string_of_message functions.</FONT>
+<FONT COLOR="#990000">*)</FONT>
+<FONT COLOR="#007F00">type</FONT> message &lt;ocaml predef&gt; = {
+  from : string;
+  subject : string;
+  body : string;
+}
+</PRE><!--TOC subsubsection Field <TT>ocaml.mutable</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc16">4.3.2</A>  Field <TT>ocaml.mutable</TT><A NAME="ocaml.mutable"></A></H4><!--SEC END --><P><I>Position</I>: after a record field name</P><P><I>Values</I>: none, <TT>true</TT> or <TT>false</TT></P><P><I>Semantics</I>: this flag indicates that the corresponding OCaml
+record field is mutable.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> counter = {
+  total &lt;ocaml <FONT COLOR="#007F00">mutable</FONT>&gt; : int;
+  errors &lt;ocaml <FONT COLOR="#007F00">mutable</FONT>&gt; : int;
+}
+</PRE><P>translates to the following OCaml definition:</P><PRE>
+<FONT COLOR="#007F00">type</FONT> counter = {
+  <FONT COLOR="#007F00">mutable</FONT> total : int;
+  <FONT COLOR="#007F00">mutable</FONT> errors : int;
+}
+</PRE><!--TOC subsubsection Field <TT>ocaml.default</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc17">4.3.3</A>  Field <TT>ocaml.default</TT><A NAME="ocaml.default"></A></H4><!--SEC END --><P><I>Position</I>: after a record field name marked with a <TT>~</TT>
+symbol or at the beginning of a tuple field.</P><P><I>Values</I>: any valid OCaml expression</P><P><I>Semantics</I>: specifies an explicit default value for a field of an
+OCaml record or tuple, allowing that field to be omitted.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> color = [ <FONT COLOR="#0033CC">Black</FONT> <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">White</FONT> <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">Rgb</FONT> <FONT COLOR="#007F00">of</FONT> (int * int * int) ]
+
+<FONT COLOR="#007F00">type</FONT> ford_t = {
+  year : int;
+  ~color &lt;ocaml default=<FONT COLOR="#AA4444">"&#X2018;Black"</FONT>&gt; : color;
+}
+
+<FONT COLOR="#007F00">type</FONT> point = (int * int * &lt;ocaml default=<FONT COLOR="#AA4444">"0"</FONT>&gt; : int)
+</PRE><!--TOC subsubsection Field <TT>ocaml.from</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc18">4.3.4</A>  Field <TT>ocaml.from</TT><A NAME="ocaml.from"></A></H4><!--SEC END --><P><I>Position</I>: left-hand side of a type definition, after the type name</P><P><I>Values</I>: OCaml module name without the <TT>_t</TT>, <TT>_b</TT>,
+<TT>_j</TT> or <TT>_v</TT> 
+suffix. This can be also seen as the name of the original ATD file,
+without the <TT>.atd</TT> extension and capitalized like an OCaml
+module name.</P><P><I>Semantics</I>: specifies the base name of the OCaml modules
+where the type and values coming with that type are defined.</P><P>It is useful for ATD types defined as 
+<TT>abstract</TT> and for types annotated as predefined using 
+the annotation <TT>&lt;ocaml predef&gt;</TT>.
+In both cases, the missing definitions must be provided by
+modules composed of the base name and the standard suffix assumed by
+Atdgen which is
+<TT>_t</TT>, <TT>_b</TT>,
+<TT>_j</TT> or <TT>_v</TT>.</P><P><I>Example</I>: First input file <TT>part1.atd</TT>:
+</P><PRE>
+<FONT COLOR="#007F00">type</FONT> point = { x : int; y : int }
+</PRE><P>
+Second input file <TT>part2.atd</TT> depending on the first one:
+</P><PRE>
+<FONT COLOR="#007F00">type</FONT> point &lt;ocaml from=<FONT COLOR="#AA4444">"Part1"</FONT>&gt; = abstract
+<FONT COLOR="#007F00">type</FONT> points = point list
+</PRE><!--TOC subsubsection Field <TT>ocaml.module</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc19">4.3.5</A>  Field <TT>ocaml.module</TT><A NAME="ocaml.module"></A></H4><!--SEC END --><P>In most cases since Atdgen 1.2.0
+<TT>module</TT> annotations are deprecated in favor of <TT>from</TT>
+annotations previously described.</P><P><I>Position</I>: left-hand side of a type definition, after the type name</P><P><I>Values</I>: OCaml module name</P><P><I>Semantics</I>: specifies the OCaml module where the type and values
+coming with that type are defined. It is useful for ATD types defined as 
+<TT>abstract</TT> and for types annotated as predefined using 
+the annotation <TT>&lt;ocaml predef&gt;</TT>.
+In both cases, the missing definitions can be provided either by
+globally opening an OCaml module with an OCaml directive or by specifying
+locally the name of the module to use.</P><P>The latter approach is recommended because it allows to create
+type and value aliases in the OCaml module being generated. It results
+in a complete module signature regardless of the external
+nature of some items.</P><P><I>Example</I>: Input file <TT>example.atd</TT>:
+</P><PRE>
+<FONT COLOR="#007F00">type</FONT> document &lt;ocaml module=<FONT COLOR="#AA4444">"Doc"</FONT>&gt; = abstract
+
+<FONT COLOR="#007F00">type</FONT> color &lt;ocaml predef module=<FONT COLOR="#AA4444">"Color"</FONT>&gt; =
+  [ <FONT COLOR="#0033CC">Black</FONT> <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">White</FONT> ] &lt;ocaml repr=<FONT COLOR="#AA4444">"classic"</FONT>&gt;
+
+<FONT COLOR="#007F00">type</FONT> point &lt;ocaml predef module=<FONT COLOR="#AA4444">"Point"</FONT>&gt; = {
+  x : float;
+  y : float;
+}
+</PRE><P>
+gives the following OCaml type definitions 
+(file <TT>example.mli</TT>):
+</P><PRE>
+<FONT COLOR="#007F00">type</FONT> document = <FONT COLOR="#0033CC">Doc</FONT>.document
+
+<FONT COLOR="#007F00">type</FONT> color = <FONT COLOR="#0033CC">Color</FONT>.color =  <FONT COLOR="#0033CC">Black</FONT> <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">White</FONT> 
+
+<FONT COLOR="#007F00">type</FONT> point = <FONT COLOR="#0033CC">Point</FONT>.point = { x: float; y: float }
+</PRE><P>Now for instance <TT>Example.Black</TT> and <TT>Color.Black</TT>
+can be used interchangeably in other modules.</P><!--TOC subsubsection Field <TT>ocaml.t</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc20">4.3.6</A>  Field <TT>ocaml.t</TT><A NAME="ocaml.t"></A></H4><!--SEC END --><P><I>Position</I>: left-hand side of a type definition, after the type
+name. Must be used in conjunction with a <TT>module</TT> field.</P><P><I>Values</I>: OCaml type name as found in an external module.</P><P><I>Semantics</I>: This option allows to specify the name of an
+OCaml type defined in an external module.</P><P>It is useful when the type needs to be renamed because its original
+name is already in use or not enough informative.
+Typically we may want to give the name <TT>foo</TT> to a type
+originally defined in OCaml as <TT>Foo.t</TT>.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> foo &lt;ocaml_biniou module=<FONT COLOR="#AA4444">"Foo"</FONT> t=<FONT COLOR="#AA4444">"t"</FONT>&gt; = abstract
+<FONT COLOR="#007F00">type</FONT> bar &lt;ocaml_biniou module=<FONT COLOR="#AA4444">"Bar"</FONT> t=<FONT COLOR="#AA4444">"t"</FONT>&gt; = abstract
+<FONT COLOR="#007F00">type</FONT> t &lt;ocaml_biniou module=<FONT COLOR="#AA4444">"Baz"</FONT>&gt; = abstract
+</PRE><P>
+allows local type names to be unique
+and gives the following OCaml type definitions:
+</P><PRE>
+<FONT COLOR="#007F00">type</FONT> foo = <FONT COLOR="#0033CC">Foo</FONT>.t
+<FONT COLOR="#007F00">type</FONT> bar = <FONT COLOR="#0033CC">Bar</FONT>.t
+<FONT COLOR="#007F00">type</FONT> t = <FONT COLOR="#0033CC">Baz</FONT>.t
+</PRE><!--TOC subsubsection Field <TT>ocaml.field_prefix</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc21">4.3.7</A>  Field <TT>ocaml.field_prefix</TT><A NAME="field-prefix"></A></H4><!--SEC END --><P><I>Position</I>: record type expression</P><P><I>Values</I>: any string making a valid prefix for OCaml record field names</P><P><I>Semantics</I>: specifies a prefix to be prepended to each field of
+the OCaml definition of the record. Overridden by alternate field
+names defined on a per-field basis.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> point2 = {
+  x : int;
+  y : int;
+} &lt;ocaml field_prefix=<FONT COLOR="#AA4444">"p2_"</FONT>&gt;
+</PRE><P>
+gives the following OCaml type definition:
+</P><PRE>
+<FONT COLOR="#007F00">type</FONT> point2 = {
+  p2_x : int;
+  p2_y : int;
+}
+</PRE><!--TOC subsubsection Field <TT>ocaml.name</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc22">4.3.8</A>  Field <TT>ocaml.name</TT><A NAME="ocaml.name"></A></H4><!--SEC END --><P><I>Position</I>: after record field name or variant name</P><P><I>Values</I>: any string making a valid OCaml record field name or
+variant name</P><P><I>Semantics</I>: specifies an alternate record field name or variant
+names to be used in OCaml.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> color = [
+    <FONT COLOR="#0033CC">Black</FONT> &lt;ocaml name=<FONT COLOR="#AA4444">"Grey0"</FONT>&gt;
+  <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">White</FONT> &lt;ocaml name=<FONT COLOR="#AA4444">"Grey100"</FONT>&gt;
+  <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">Grey</FONT> &lt;ocaml name=<FONT COLOR="#AA4444">"Grey50"</FONT>&gt;
+]
+
+<FONT COLOR="#007F00">type</FONT> profile = {
+  id &lt;ocaml name=<FONT COLOR="#AA4444">"profile_id"</FONT>&gt; : int;
+  username : string;
+}
+</PRE><P>
+gives the following OCaml type definitions:
+</P><PRE>
+<FONT COLOR="#007F00">type</FONT> color = [
+    <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Grey0</FONT>
+  <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Grey100</FONT>
+  <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Grey50</FONT>
+]
+
+<FONT COLOR="#007F00">type</FONT> profile = {
+  profile_id : int;
+  username : string;
+}
+</PRE><!--TOC subsubsection Field <TT>ocaml.repr</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc23">4.3.9</A>  Field <TT>ocaml.repr</TT><A NAME="ocaml.repr"></A></H4><!--SEC END --><!--TOC paragraph Integers-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Integers</H5><!--SEC END --><P><I>Position</I>: after <TT>int</TT> type</P><P><I>Values</I>: <TT>char</TT>, <TT>int32</TT>, <TT>int64</TT></P><P><I>Semantics</I>: specifies an alternate type for representing integers.
+The default type is <TT>int</TT>, but <TT>char</TT>, <TT>int32</TT>
+and <TT>int64</TT> can be used instead. These three types are
+supported by both Atdgen-biniou and Atdgen-json but Atdgen-biniou
+currently requires that they map to the corresponding fixed-width
+types provided by the biniou format.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> t = {
+  id : int
+    &lt;ocaml repr=<FONT COLOR="#AA4444">"int64"</FONT>&gt;
+    &lt;biniou repr=<FONT COLOR="#AA4444">"int64"</FONT>&gt;;
+  data : string list;
+}
+</PRE><!--TOC paragraph Lists and arrays-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Lists and arrays</H5><!--SEC END --><P><I>Position</I>: after a <TT>list</TT> type</P><P><I>Values</I>: <TT>array</TT></P><P><I>Semantics</I>: maps to OCaml&#X2019;s <TT>array</TT> type instead of <TT>list</TT>.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> t = {
+  id : int;
+  data : string list
+    &lt;ocaml repr=<FONT COLOR="#AA4444">"array"</FONT>&gt;;
+}
+</PRE><!--TOC paragraph Sum types-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Sum types</H5><!--SEC END --><P><I>Position</I>: after a sum type (denoted by square brackets)</P><P><I>Values</I>: <TT>classic</TT></P><P><I>Semantics</I>: maps to OCaml&#X2019;s classic variants instead of
+polymorphic variants.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> fruit = [ <FONT COLOR="#0033CC">Apple</FONT> <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">Orange</FONT> ] &lt;ocaml repr=<FONT COLOR="#AA4444">"classic"</FONT>&gt;
+</PRE><P>translates to the following OCaml type definition:</P><PRE>
+<FONT COLOR="#007F00">type</FONT> fruit = <FONT COLOR="#0033CC">Apple</FONT> <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">Orange</FONT>
+</PRE><!--TOC paragraph Shared values-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Shared values</H5><!--SEC END --><P><I>Position</I>: after a <TT>shared</TT> type</P><P><I>Values</I>: <TT>ref</TT></P><P><I>Semantics</I>: wraps the value using OCaml&#X2019;s <TT>ref</TT> type,
+which is as of Atdgen 1.1.0 
+the only way of sharing values other than records.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> shared_string = string shared &lt;ocaml repr=<FONT COLOR="#AA4444">"ref"</FONT>&gt;
+</PRE><P>translates to the following OCaml type definition:</P><PRE>
+<FONT COLOR="#007F00">type</FONT> shared_string = string ref
+</PRE><!--TOC subsubsection Field <TT>ocaml.validator</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc24">4.3.10</A>  Field <TT>ocaml.validator</TT><A NAME="ocaml.validator"></A></H4><!--SEC END --><P><I>Position</I>: after any type expression except type variables</P><P><I>Values</I>: OCaml function that takes one argument of the given type
+and returns a bool</P><P><I>Semantics</I>: <TT>atdgen -v</TT> produces for each type named
+<I>t</I> a function <TT>validate_</TT><I>t</I>:
+</P><PRE>
+<FONT COLOR="#007F00">val</FONT> validate_t : t -&gt; bool
+</PRE><P>
+Such a function returns true if and only if the value and all of its
+subnodes pass all the validators specified by annotations of the form
+<TT>&lt;ocaml validator="..."&gt;</TT>.</P><P><I>Example</I>: </P><PRE>
+<FONT COLOR="#007F00">type</FONT> positive = int &lt;ocaml validator=<FONT COLOR="#AA4444">"fun x -&gt; x &gt; 0"</FONT>&gt;
+
+<FONT COLOR="#007F00">type</FONT> point = {
+  x : positive;
+  y : positive;
+  z : int;
+}
+  &lt;ocaml validator=<FONT COLOR="#AA4444">"Point.validate"</FONT>&gt;
+  <FONT COLOR="#990000">(* Some validating function from a user-defined module Point *)</FONT> 
+</PRE><P>The generated <TT>validate_point</TT> function is equivalent to the
+following:</P><PRE>
+<FONT COLOR="#007F00">let</FONT> validate_point p =
+  <FONT COLOR="#0033CC">Point</FONT>.validate p
+  &amp;&amp; (<FONT COLOR="#007F00">fun</FONT> x -&gt; x &gt; 0) p.x
+  &amp;&amp; (<FONT COLOR="#007F00">fun</FONT> x -&gt; x &gt; 0) p.y
+</PRE><!--TOC subsection Section <TT>ocaml_biniou</TT>-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc25">4.4</A>  Section <TT>ocaml_biniou</TT><A NAME="ocaml-biniou"></A></H3><!--SEC END --><P>Section <TT>ocaml_biniou</TT> takes precedence over section <TT>ocaml</TT> 
+in Biniou mode (<TT>-b</TT>) for the following fields:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>predef</TT> (see <A HREF="#ocaml.predef">4.3.1</A>)
+</LI><LI CLASS="li-itemize"><TT>module</TT> (see <A HREF="#ocaml.module">4.3.5</A>)
+</LI><LI CLASS="li-itemize"><TT>t</TT> (see <A HREF="#ocaml.t">4.3.6</A>)
+</LI></UL><!--TOC subsection Section <TT>ocaml_json</TT>-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc26">4.5</A>  Section <TT>ocaml_json</TT><A NAME="ocaml-json"></A></H3><!--SEC END --><P>Section <TT>ocaml_json</TT> takes precedence over section <TT>ocaml</TT>
+in JSON mode (<TT>-j</TT>) for the following fields:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>predef</TT> (see <A HREF="#ocaml.predef">4.3.1</A>)
+</LI><LI CLASS="li-itemize"><TT>module</TT> (see <A HREF="#ocaml.module">4.3.5</A>)
+</LI><LI CLASS="li-itemize"><TT>t</TT> (see <A HREF="#ocaml.t">4.3.6</A>)
+</LI></UL><P><I>Example</I>: </P><P>This example shows how to parse a field into a generic tree
+of type <TT>Yojson.Safe.json</TT> rather than a value of a specialized
+OCaml type.
+</P><PRE>
+<FONT COLOR="#007F00">type</FONT> dyn &lt;ocaml_json module=<FONT COLOR="#AA4444">"Yojson.Safe"</FONT> t=<FONT COLOR="#AA4444">"json"</FONT>&gt; = abstract
+
+<FONT COLOR="#007F00">type</FONT> t = { foo: int; bar: dyn }
+</PRE><P>translates to the following OCaml type definitions:</P><PRE>
+<FONT COLOR="#007F00">type</FONT> dyn = <FONT COLOR="#0033CC">Yojson</FONT>.<FONT COLOR="#0033CC">Safe</FONT>.json
+
+<FONT COLOR="#007F00">type</FONT> t = { foo : int; bar : dyn }
+</PRE><P>Sample OCaml value of type <TT>t</TT>:
+</P><PRE>
+{
+  foo = 12345;
+  bar =
+    <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">List</FONT> [
+      <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Int</FONT> 12;
+      <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">String</FONT> <FONT COLOR="#AA4444">"abc"</FONT>;
+      <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Assoc</FONT> [
+        <FONT COLOR="#AA4444">"x"</FONT>, <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Float</FONT> 3.14;
+        <FONT COLOR="#AA4444">"y"</FONT>, <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Float</FONT> 0.0;
+        <FONT COLOR="#AA4444">"color"</FONT>, <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">List</FONT> [ <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Float</FONT> 0.3; <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Float</FONT> 0.0; <FONT COLOR="#0033CC">&#X2018;</FONT><FONT COLOR="#0033CC">Float</FONT> 1.0 ]
+      ]
+    ]
+}
+</PRE><P>Corresponding JSON data as obtained with <TT>string_of_t</TT>:
+</P><PRE CLASS="verbatim">{"foo":12345,"bar":[12,"abc",{"x":3.14,"y":0.0,"color":[0.3,0.0,1.0]}]}
+</PRE><!--TOC subsection Section <TT>doc</TT>-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc27">4.6</A>  Section <TT>doc</TT><A NAME="doc"></A></H3><!--SEC END --><P>Unlike comments, <TT>doc</TT> annotations are meant to be
+propagated into the generated source code. This is useful for
+making generated interface files readable without having to consult
+the original ATD file.</P><P>Generated source code comments can comply to a standard format and
+take advantage of documentation generators such as javadoc or
+ocamldoc.</P><!--TOC subsubsection Field <TT>doc.text</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR --><A NAME="htoc28">4.6.1</A>  Field <TT>doc.text</TT><A NAME="doc.text"></A></H4><!--SEC END --><P><I>Position</I>: </P><UL CLASS="itemize"><LI CLASS="li-itemize">
+after the type name on the left-hand side of a type definition
+</LI><LI CLASS="li-itemize">after the type expression on the right hand of a type definition
+(but not after any type expression)
+</LI><LI CLASS="li-itemize">after record field names
+</LI><LI CLASS="li-itemize">after variant names
+</LI></UL><P><I>Values</I>: UTF-8-encoded text using a minimalistic markup language</P><P><I>Semantics</I>: The markup language is defined as follows:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Blank lines separate paragraphs.
+</LI><LI CLASS="li-itemize"><CODE>{{ }}</CODE> can be used to enclose inline verbatim text.
+</LI><LI CLASS="li-itemize"><CODE>{{{ }}}</CODE> can be used to enclose verbatim text where
+whitespace is preserved. 
+</LI><LI CLASS="li-itemize">The backslash character is used to escape special character sequences.
+In regular paragraph mode the special sequences are [<TT>\</TT>], [] and [].
+In inline verbatim text, special sequences are [<TT>\</TT>] and [].
+In verbatim text, special sequences are [<TT>\</TT>] and [].
+</LI></UL><P><I>Example</I>: The following is a full example demonstrating the use of
+<TT>doc</TT> annotations but also shows the full interface
+file <TT>genealogy.mli</TT> generated using:</P><PRE CLASS="verbatim">$ atdgen -b genealogy.atd
+</PRE><P>Input file <TT>genealogy.atd</TT>:</P><PRE>
+&lt;doc text=<FONT COLOR="#AA4444">"Type definitions for family trees"</FONT>&gt;
+
+<FONT COLOR="#007F00">type</FONT> tree = {
+  members : person list;
+  filiations : filiation list;
+}
+
+<FONT COLOR="#007F00">type</FONT> filiation = {
+  parent : person_id;
+  child : person_id;
+  filiation_type : filiation_type;
+}
+  &lt;doc text=<FONT COLOR="#AA4444">"Connection between parent or primary caretaker and child"</FONT>&gt;
+
+<FONT COLOR="#007F00">type</FONT> filiation_type = {
+  ?genetic : bool option;
+  ?pregnancy : bool option;
+  ?raised_from_birth : bool option;
+  ?raised : bool option;
+  ?stepchild : bool option;
+  ?adopted : bool option;
+}
+  &lt;doc text=<FONT COLOR="#AA4444">"</FONT>
+<FONT COLOR="#AA4444">Example of a father who raised his child from birth</FONT>
+<FONT COLOR="#AA4444">but may not be the biological father:</FONT>
+
+<FONT COLOR="#AA4444">{{{</FONT>
+<FONT COLOR="#AA4444">{</FONT>
+<FONT COLOR="#AA4444">  genetic = None;</FONT>
+<FONT COLOR="#AA4444">  pregnancy = Some false;</FONT>
+<FONT COLOR="#AA4444">  raised_from_birth = Some true;</FONT>
+<FONT COLOR="#AA4444">  raised = Some true;</FONT>
+<FONT COLOR="#AA4444">  stepchild = Some false;</FONT>
+<FONT COLOR="#AA4444">  adopted = Some false;</FONT>
+<FONT COLOR="#AA4444">}</FONT>
+<FONT COLOR="#AA4444">}}}</FONT>
+<FONT COLOR="#AA4444">"</FONT>&gt;
+
+<FONT COLOR="#007F00">type</FONT> person_id
+  &lt;doc text=<FONT COLOR="#AA4444">"Two persons with the same {{person_id}} must be the same</FONT>
+<FONT COLOR="#AA4444">             person. Two persons with different {{person_id}}s</FONT>
+<FONT COLOR="#AA4444">             may be the same person if there is not enough evidence to</FONT>
+<FONT COLOR="#AA4444">             support it."</FONT>&gt; = int
+
+<FONT COLOR="#007F00">type</FONT> person = {
+  person_id : person_id;
+  name : string;
+  ~gender : gender list;
+  ?biological_gender
+    &lt;doc text=<FONT COLOR="#AA4444">"Biological gender actually used for procreating"</FONT>&gt; :
+    gender option;
+}
+
+<FONT COLOR="#007F00">type</FONT> gender =
+  [
+  <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">F</FONT> &lt;doc text=<FONT COLOR="#AA4444">"female"</FONT>&gt;
+  <FONT COLOR="#77AAAA">|</FONT> <FONT COLOR="#0033CC">M</FONT> &lt;doc text=<FONT COLOR="#AA4444">"male"</FONT>&gt;
+  ]
+    &lt;doc text=<FONT COLOR="#AA4444">"Gender, definition depending on the context"</FONT>&gt;
+</PRE><P>translates using <TT>atdgen -b genealogy.atd</TT>
+into the following OCaml interface
+file <TT>genealogy_b.mli</TT> with ocamldoc-compliant comments:</P><PRE><FONT COLOR="#990000">(* Auto-generated from "genealogy.atd" *)</FONT>
+
+
+<FONT COLOR="#990000">(** Type definitions for family trees *)</FONT>
+
+<FONT COLOR="#990000">(**</FONT>
+<FONT COLOR="#990000">  Example of a father who raised his child from birth but may not be the</FONT>
+<FONT COLOR="#990000">  biological father:</FONT>
+<FONT COLOR="#990000">  </FONT>
+<FONT COLOR="#990000">{v</FONT>
+<FONT COLOR="#990000">\</FONT><FONT COLOR="#990000">{</FONT>
+<FONT COLOR="#990000">  genetic = None;</FONT>
+<FONT COLOR="#990000">  pregnancy = Some false;</FONT>
+<FONT COLOR="#990000">  raised_from_birth = Some true;</FONT>
+<FONT COLOR="#990000">  raised = Some true;</FONT>
+<FONT COLOR="#990000">  stepchild = Some false;</FONT>
+<FONT COLOR="#990000">  adopted = Some false;</FONT>
+<FONT COLOR="#990000">\</FONT><FONT COLOR="#990000">}</FONT>
+<FONT COLOR="#990000">v}</FONT>
+<FONT COLOR="#990000">*)</FONT>
+<FONT COLOR="#007F00">type</FONT> filiation_type = <FONT COLOR="#0033CC">Genealogy_t</FONT>.filiation_type = {
+  genetic: bool option;
+  pregnancy: bool option;
+  raised_from_birth: bool option;
+  raised: bool option;
+  stepchild: bool option;
+  adopted: bool option
+}
+
+<FONT COLOR="#990000">(**</FONT>
+<FONT COLOR="#990000">  Two persons with the same [person_id] must be the same person. Two persons</FONT>
+<FONT COLOR="#990000">  with different [person_id]s may be the same person if there is not enough</FONT>
+<FONT COLOR="#990000">  evidence to support it.</FONT>
+<FONT COLOR="#990000">*)</FONT>
+<FONT COLOR="#007F00">type</FONT> person_id = <FONT COLOR="#0033CC">Genealogy_t</FONT>.person_id
+
+<FONT COLOR="#990000">(** Connection between parent or primary caretaker and child *)</FONT>
+<FONT COLOR="#007F00">type</FONT> filiation = <FONT COLOR="#0033CC">Genealogy_t</FONT>.filiation = {
+  parent: person_id;
+  child: person_id;
+  filiation_type: filiation_type
+}
+
+<FONT COLOR="#990000">(** Gender, definition depending on the context *)</FONT>
+<FONT COLOR="#007F00">type</FONT> gender = <FONT COLOR="#0033CC">Genealogy_t</FONT>.gender
+
+<FONT COLOR="#007F00">type</FONT> person = <FONT COLOR="#0033CC">Genealogy_t</FONT>.person = {
+  person_id: person_id;
+  name: string;
+  gender: gender list;
+  biological_gender: gender option
+    <FONT COLOR="#990000">(** Biological gender actually used for procreating *)</FONT>
+}
+
+<FONT COLOR="#007F00">type</FONT> tree = <FONT COLOR="#0033CC">Genealogy_t</FONT>.tree = {
+  members: person list;
+  filiations: filiation list
+}
+
+<FONT COLOR="#990000">(* Writers for type filiation_type *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> filiation_type_tag : <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag
+  <FONT COLOR="#990000">(** Tag used by the writers for type {!filiation_type}.</FONT>
+<FONT COLOR="#990000">      Readers may support more than just this tag. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_untagged_filiation_type :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; filiation_type -&gt; unit
+  <FONT COLOR="#990000">(** Output an untagged biniou value of type {!filiation_type}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_filiation_type :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; filiation_type -&gt; unit
+  <FONT COLOR="#990000">(** Output a biniou value of type {!filiation_type}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_filiation_type :
+  ?len:int -&gt; filiation_type -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!filiation_type} into </FONT>
+<FONT COLOR="#990000">      a biniou string. *)</FONT>
+
+<FONT COLOR="#990000">(* Readers for type filiation_type *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> get_filiation_type_reader :
+  <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag -&gt; (<FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; filiation_type)
+  <FONT COLOR="#990000">(** Return a function that reads an untagged</FONT>
+<FONT COLOR="#990000">      biniou value of type {!filiation_type}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_filiation_type :
+  <FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; filiation_type
+  <FONT COLOR="#990000">(** Input a tagged biniou value of type {!filiation_type}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> filiation_type_of_string :
+  ?pos:int -&gt; string -&gt; filiation_type
+  <FONT COLOR="#990000">(** Deserialize a biniou value of type {!filiation_type}.</FONT>
+<FONT COLOR="#990000">      @param pos specifies the position where </FONT>
+<FONT COLOR="#990000">                 reading starts. Default: 0. *)</FONT>
+
+<FONT COLOR="#990000">(* Writers for type person_id *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> person_id_tag : <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag
+  <FONT COLOR="#990000">(** Tag used by the writers for type {!person_id}.</FONT>
+<FONT COLOR="#990000">      Readers may support more than just this tag. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_untagged_person_id :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; person_id -&gt; unit
+  <FONT COLOR="#990000">(** Output an untagged biniou value of type {!person_id}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_person_id :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; person_id -&gt; unit
+  <FONT COLOR="#990000">(** Output a biniou value of type {!person_id}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_person_id :
+  ?len:int -&gt; person_id -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!person_id} into </FONT>
+<FONT COLOR="#990000">      a biniou string. *)</FONT>
+
+<FONT COLOR="#990000">(* Readers for type person_id *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> get_person_id_reader :
+  <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag -&gt; (<FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; person_id)
+  <FONT COLOR="#990000">(** Return a function that reads an untagged</FONT>
+<FONT COLOR="#990000">      biniou value of type {!person_id}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_person_id :
+  <FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; person_id
+  <FONT COLOR="#990000">(** Input a tagged biniou value of type {!person_id}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> person_id_of_string :
+  ?pos:int -&gt; string -&gt; person_id
+  <FONT COLOR="#990000">(** Deserialize a biniou value of type {!person_id}.</FONT>
+<FONT COLOR="#990000">      @param pos specifies the position where </FONT>
+<FONT COLOR="#990000">                 reading starts. Default: 0. *)</FONT>
+
+<FONT COLOR="#990000">(* Writers for type filiation *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> filiation_tag : <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag
+  <FONT COLOR="#990000">(** Tag used by the writers for type {!filiation}.</FONT>
+<FONT COLOR="#990000">      Readers may support more than just this tag. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_untagged_filiation :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; filiation -&gt; unit
+  <FONT COLOR="#990000">(** Output an untagged biniou value of type {!filiation}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_filiation :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; filiation -&gt; unit
+  <FONT COLOR="#990000">(** Output a biniou value of type {!filiation}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_filiation :
+  ?len:int -&gt; filiation -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!filiation} into </FONT>
+<FONT COLOR="#990000">      a biniou string. *)</FONT>
+
+<FONT COLOR="#990000">(* Readers for type filiation *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> get_filiation_reader :
+  <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag -&gt; (<FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; filiation)
+  <FONT COLOR="#990000">(** Return a function that reads an untagged</FONT>
+<FONT COLOR="#990000">      biniou value of type {!filiation}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_filiation :
+  <FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; filiation
+  <FONT COLOR="#990000">(** Input a tagged biniou value of type {!filiation}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> filiation_of_string :
+  ?pos:int -&gt; string -&gt; filiation
+  <FONT COLOR="#990000">(** Deserialize a biniou value of type {!filiation}.</FONT>
+<FONT COLOR="#990000">      @param pos specifies the position where </FONT>
+<FONT COLOR="#990000">                 reading starts. Default: 0. *)</FONT>
+
+<FONT COLOR="#990000">(* Writers for type gender *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> gender_tag : <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag
+  <FONT COLOR="#990000">(** Tag used by the writers for type {!gender}.</FONT>
+<FONT COLOR="#990000">      Readers may support more than just this tag. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_untagged_gender :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; gender -&gt; unit
+  <FONT COLOR="#990000">(** Output an untagged biniou value of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_gender :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; gender -&gt; unit
+  <FONT COLOR="#990000">(** Output a biniou value of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_gender :
+  ?len:int -&gt; gender -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!gender} into </FONT>
+<FONT COLOR="#990000">      a biniou string. *)</FONT>
+
+<FONT COLOR="#990000">(* Readers for type gender *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> get_gender_reader :
+  <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag -&gt; (<FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; gender)
+  <FONT COLOR="#990000">(** Return a function that reads an untagged</FONT>
+<FONT COLOR="#990000">      biniou value of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_gender :
+  <FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; gender
+  <FONT COLOR="#990000">(** Input a tagged biniou value of type {!gender}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> gender_of_string :
+  ?pos:int -&gt; string -&gt; gender
+  <FONT COLOR="#990000">(** Deserialize a biniou value of type {!gender}.</FONT>
+<FONT COLOR="#990000">      @param pos specifies the position where </FONT>
+<FONT COLOR="#990000">                 reading starts. Default: 0. *)</FONT>
+
+<FONT COLOR="#990000">(* Writers for type person *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> person_tag : <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag
+  <FONT COLOR="#990000">(** Tag used by the writers for type {!person}.</FONT>
+<FONT COLOR="#990000">      Readers may support more than just this tag. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_untagged_person :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; person -&gt; unit
+  <FONT COLOR="#990000">(** Output an untagged biniou value of type {!person}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_person :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; person -&gt; unit
+  <FONT COLOR="#990000">(** Output a biniou value of type {!person}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_person :
+  ?len:int -&gt; person -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!person} into </FONT>
+<FONT COLOR="#990000">      a biniou string. *)</FONT>
+
+<FONT COLOR="#990000">(* Readers for type person *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> get_person_reader :
+  <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag -&gt; (<FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; person)
+  <FONT COLOR="#990000">(** Return a function that reads an untagged</FONT>
+<FONT COLOR="#990000">      biniou value of type {!person}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_person :
+  <FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; person
+  <FONT COLOR="#990000">(** Input a tagged biniou value of type {!person}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> person_of_string :
+  ?pos:int -&gt; string -&gt; person
+  <FONT COLOR="#990000">(** Deserialize a biniou value of type {!person}.</FONT>
+<FONT COLOR="#990000">      @param pos specifies the position where </FONT>
+<FONT COLOR="#990000">                 reading starts. Default: 0. *)</FONT>
+
+<FONT COLOR="#990000">(* Writers for type tree *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> tree_tag : <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag
+  <FONT COLOR="#990000">(** Tag used by the writers for type {!tree}.</FONT>
+<FONT COLOR="#990000">      Readers may support more than just this tag. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_untagged_tree :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; tree -&gt; unit
+  <FONT COLOR="#990000">(** Output an untagged biniou value of type {!tree}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> write_tree :
+  <FONT COLOR="#0033CC">Bi_outbuf</FONT>.t -&gt; tree -&gt; unit
+  <FONT COLOR="#990000">(** Output a biniou value of type {!tree}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> string_of_tree :
+  ?len:int -&gt; tree -&gt; string
+  <FONT COLOR="#990000">(** Serialize a value of type {!tree} into </FONT>
+<FONT COLOR="#990000">      a biniou string. *)</FONT>
+
+<FONT COLOR="#990000">(* Readers for type tree *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> get_tree_reader :
+  <FONT COLOR="#0033CC">Bi_io</FONT>.node_tag -&gt; (<FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; tree)
+  <FONT COLOR="#990000">(** Return a function that reads an untagged</FONT>
+<FONT COLOR="#990000">      biniou value of type {!tree}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> read_tree :
+  <FONT COLOR="#0033CC">Bi_inbuf</FONT>.t -&gt; tree
+  <FONT COLOR="#990000">(** Input a tagged biniou value of type {!tree}. *)</FONT>
+
+<FONT COLOR="#007F00">val</FONT> tree_of_string :
+  ?pos:int -&gt; string -&gt; tree
+  <FONT COLOR="#990000">(** Deserialize a biniou value of type {!tree}.</FONT>
+<FONT COLOR="#990000">      @param pos specifies the position where </FONT>
+<FONT COLOR="#990000">                 reading starts. Default: 0. *)</FONT>
+
+</PRE><!--TOC section Library-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc29">5</A>  Library</H2><!--SEC END --><P>A library named <TT>atdgen</TT> is installed by the standard
+installation process. Only a fraction of it is officially supported
+and documented. The documentation is available online at 
+<A HREF="http://oss.wink.com/atdgen/atdgen-1.2.2/odoc/index.html"><TT>http://oss.wink.com/atdgen/atdgen-1.2.2/odoc/index.html</TT></A>.
+
+</P><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE><!--END-->
+</div>
+</BODY>
+</HTML>

@@ -1,0 +1,16 @@
+(*
+Nom : addUtilisateur_in 
+
+*)
+
+type addUtilisateur_In = {
+ 
+  userName: 	string  ;
+  firstName: 	string ;
+  lastName: 	string ;
+  email: 			string ;
+  quota: 			int ;
+  
+}
+
+

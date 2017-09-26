@@ -1,0 +1,10 @@
+type metadataCat = {
+  filename: string ;
+  json: string ;
+  mimetype: string ;
+  erreurs: string ;
+
+}
+
+
+

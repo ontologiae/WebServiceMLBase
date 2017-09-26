@@ -1,0 +1,13 @@
+type groupInfo = {
+  data: group_t  ;
+}
+
+type group_t = {
+  authorityType: 	string ;
+  displayName: 		string ;
+  fullName: 			string ;
+  shortName: 			string ;
+  url: 						string;
+}
+
+

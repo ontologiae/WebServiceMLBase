@@ -1,0 +1,16 @@
+(*
+Nom : Catégories fichiers
+Url : ./inlineWebScript.rb 'http://AlfrescoDev:8080/alfresco/service/docasu/ui/node/categories/%7BnodeId%7D' 173b03cc-5b96-488a-8773-07df8b6c34b4 46691137-4c0d-4eaa-8072-27bef1fd6f15
+
+*)
+type categs = {
+  msg: string ;
+  categ_list : categ list ;
+  success: bool ;
+}
+
+type categ = {
+  id: string ;
+  text: string ;
+}
+

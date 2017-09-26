@@ -1,0 +1,10 @@
+type flexigrid = {
+  page  : int;
+  total : int;
+  rows  : item_flexigrid list;
+}
+
+type item_flexigrid = {
+  id   : string;
+  cell : string list;
+}

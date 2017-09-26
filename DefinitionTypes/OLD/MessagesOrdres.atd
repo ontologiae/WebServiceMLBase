@@ -1,0 +1,93 @@
+type userName = string
+
+type nomReel  = string
+
+type prenomReel = string
+
+type nodeid   = string
+
+type cercleName = string
+
+type cle    = string
+type valeur = string
+
+type piece  = string
+type nom    = string
+
+type date   = int
+type prive_ou_publique = [ Prive | Public ]<ocaml repr="classic">
+
+
+type verbeSpeciaux = [
+| Ajouter
+| CreerCercle
+| Creer
+| DemandeAjout
+| DemandeMessages
+| EnvoyerMessage
+| Inviter
+| LectureFichier
+| Partager
+| Recoit
+| Signer
+| Supprimer
+| Telecharger
+]<ocaml repr="classic">
+
+
+type  nomSpeciaux = [
+| A_utilisateurs of (userName list * cercleName list * date)
+| AvecUser       of userName
+| Cercle 	 of cercleName
+| Coffre
+| ClassifTags    of (prive_ou_publique * cle * valeur)
+| Dossier 	 of (nom * string)
+| Fichier        of (nodeid * nom)
+| Message 	 of string 
+| Page 		 of int
+| Partage 	 of (nodeid * nom)
+| Piece          of  string
+| User 		 of (userName * prenomReel * nomReel)
+| Users		 of  userName  list (*TODO : rajouter liste cercle, et deviendra un jour que des cerles (sic)*)
+]<ocaml repr="classic">
+
+
+
+type mot = [
+| NA
+| Nom     	  		of nomSpeciaux
+| Verbe 	  		of verbeSpeciaux
+]<ocaml repr="classic">
+
+(*{
+ sujet = Sujet (User("M. truc","33"));
+ verbe = Verbe DemandeAjoutPieceDossier;
+ complementObjet = ComplementObjet (Piece of "Carte identité");
+ complementObjetIndirect = ComplementObjetIndirect (Dossier ("NomDossierPublic","NomclassifTag"))
+}*)
+
+type ordre = {
+ sujet 				: mot;
+ verbe 				: mot;
+ complementObjet 		: mot;
+ complementObjetIndirect 	: mot;
+}
+
+type contact_cowebo <ocaml from="ContactCowebo"> = abstract
+
+type msg = {
+	?typeMsg : string;
+	lu 		: bool;
+  	id_message      : string;
+	objetMessage 	: string;
+	messageContenu  : string;
+	emetteur 	: string;
+	?emetteurR 	: contact_cowebo;
+	date_msg 	: float;
+	destinatairesU  : userName list;
+	destinatairesC  : cercleName list;
+	ordres 		: ordre list;
+}
+
+
+

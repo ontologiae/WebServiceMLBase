@@ -1,0 +1,55 @@
+
+type msg <ocaml from="TypesMandarine"> = abstract
+
+
+
+type partage = {
+	nodeidlien 	: string;
+	nodeidoriginal  : string;
+	date_partage 	: string;
+}
+
+type utilisateur_cercle = {
+  prenom_usr 	: string;
+  nom_usr  	: string;
+  login_usr    	: string;
+  listePartages : partage list;
+}
+ 
+
+type cercleInfos  = {
+ nom_cercle    		: string;
+ date_creation_cercle 	: string;
+ liste_utilisateurs 	: utilisateur_cercle list; 
+}
+
+
+type releve_information_cercle = cercleInfos list 
+
+
+
+type liste_de_contact = contact_cowebo list
+
+
+
+type nom_piece    = {
+ 	nom_piece : string;
+}
+
+
+type dossier_type = {
+	nom_dossier_type : string;
+	liste_pieces  : nom_piece list;
+}
+
+type liste_dossier_type = dossier_type list
+
+
+
+type dossier_pieces = {
+		nom_dossier : string;
+		listePieces : string list;
+}
+
+type liste_dossiers_pieces_manquantes = dossier_pieces list
+

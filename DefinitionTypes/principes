@@ -1,0 +1,4 @@
+Imutabilité
+Idempotence  	 : égalité structurelle
+Indépendance 	 : Message indépendant du médium 
+Autodescriptible : contiennent leur propre représentation

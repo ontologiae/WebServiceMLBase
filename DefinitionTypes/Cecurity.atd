@@ -1,0 +1,20 @@
+type safes_cc = {
+	id_safecc <json name="id">	: string;
+	name_cc <json name="name">	: string;
+	uid_cc  <json name="uid">	: string;
+	profilId 	: string;
+	profilRights 	: string;
+	profilDesc 	: string;
+}
+
+
+type creat_user_cc = {
+	cFEC_VERSION <json name="CFEC_VERSION"> : string;
+	safes : safes_cc list;
+	status_cc  <json name="status">	: string
+	
+}
+
+
+
+

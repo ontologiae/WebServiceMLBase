@@ -1,0 +1,15 @@
+type getFolder  = (folder) list
+
+type folder = {
+  createPermission: bool ;
+  deletePermission: bool ;
+  id: string ;
+  link: string ;
+  name: string ;
+  parentPath: string ;
+  text: string ;
+  url: string ;
+  writePermission: bool ;
+}
+
+

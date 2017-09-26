@@ -1,0 +1,12 @@
+type contact_cowebo   = {
+ 	login 		: string;
+	prenom 	        : string;
+        telephone       : string;
+	nom 	 	: string;
+	email 		: string;
+	cercles 	: string list;
+	messages_recus  : msg list;
+	messages_envoyes: msg list;
+}
+
+

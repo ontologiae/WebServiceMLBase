@@ -1,0 +1,7 @@
+type jqueryAutocomplete = autocompleteItem list
+
+type autocompleteItem = {
+  key   : string;
+value : string;
+}
+

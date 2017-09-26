@@ -1,0 +1,8 @@
+type metadataEdit = {
+  erreur: string ;
+  success: bool;
+
+}
+
+
+

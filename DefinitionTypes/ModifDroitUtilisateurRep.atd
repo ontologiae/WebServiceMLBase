@@ -1,0 +1,9 @@
+type modifDroitUtilisateurRep = {
+  isInherited: bool ;
+  permissions: (permissions_t) list 
+}
+
+type permissions_t = {
+  authority : string;
+  role      : string 
+}
