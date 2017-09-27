@@ -26,15 +26,15 @@ let _TAILLE_EN_CARACTERE_SEL = 15
 (** Modèle de donnée pour la création d'utilisateur que l'on va modifier au
  * besoin*)
 let model_create_user = {
-  CreateUser_t.userName        = "";
-  CreateUser_t.password        = "";
-  CreateUser_t.enabled         = true ;
-  CreateUser_t.firstName       = "" ;
-  CreateUser_t.lastName        = "" ;
-  CreateUser_t.email           = "";
-  CreateUser_t.disableAccount  = false;
-  CreateUser_t.quota           = 1073741823;
-  CreateUser_t.groups          = [] ;
+  Createuser_t.userName        = "";
+  Createuser_t.password        = "";
+  Createuser_t.enabled         = true ;
+  Createuser_t.firstName       = "" ;
+  Createuser_t.lastName        = "" ;
+  Createuser_t.email           = "";
+  Createuser_t.disableAccount  = false;
+  Createuser_t.quota           = 1073741823;
+  Createuser_t.groups          = [] ;
 };;
 
 (*TODO : l'idéal serait d'avoir un système ou plein d'objet sont typés (NodeID, NodeIDLien, LoginCwb, ...) dans un type unique, je lui donne
@@ -76,6 +76,7 @@ let add_utilisateur_bdd (cwb_user, prenom_reel, nom_reel, cwb_pass, email, mobil
   let open Cowebo_Config_t in
   let pathcertif = Cowebo_Config.get_val_par_cle Path_certificat_maitre in
   let certif = Netencoding.Base64.encode (Utils.file2string (Utils.pwd^"/"^pathcertif)) in
+
    let insert_coffre = "select add_utilisateur_bdd($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)" in  
   let (er,tail,result) = BDD.execute_requete_SQL_uniligne_avec_params 
       connexion

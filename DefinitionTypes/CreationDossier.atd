@@ -1,5 +1,0 @@
-type creationDossier = {
- success : bool;
- msg     : string;
- id      : string
-}

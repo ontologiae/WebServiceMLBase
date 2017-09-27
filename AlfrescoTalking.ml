@@ -3,18 +3,6 @@
 *)
 open AddUtilisateur_in_j;;
 open AddUtilisateur_out_j;;
-open GetFileAndFolder_t;;
-open GetFileAndFolder_j;;
-open CreateFolder_t;;
-open CreateFolder_j;;
-open DeleteFolder_t;;
-open DeleteFolder_j;;
-open GetFolder_t;;
-open GetFolder_j;;
-open MetadataCat_t;;
-open MetadataCat_j;;
-(*open MetadataUserCwb_t;;
-   open MetadataUserCwb_j;;*)
 open Nethttp_client.Convenience;;
 open Cowebo_Config;;
 

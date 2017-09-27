@@ -1,0 +1,21 @@
+type tickMarket = {
+	marketName <json name="MarketName">:string;
+	high <json name="High"> : float;
+	low <json name="Low"> : float;
+	volume <json name="Volume"> : float;
+	last <json name="Last"> : float;
+	baseVolume <json name="BaseVolume"> : float;
+	timeStamp <json name="TimeStamp"> : string;
+	bid <json name="Bid"> : float;
+	ask <json name="Ask"> : float;
+	openBuyOrders <json name="OpenBuyOrders"> : int;
+	openSellOrders <json name="OpenSellOrders"> : int;
+	prevDay <json name="PrevDay"> : float;
+	created <json name="Created">: string;
+}
+
+type tickerResult = {
+	success : bool;
+	message : string;
+	result : tickMarket list;
+}

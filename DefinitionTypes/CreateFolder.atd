@@ -1,5 +1,0 @@
-type createFolder = {
-success 	: bool;
-msg 		: string;
-id 		: string;
-}

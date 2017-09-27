@@ -1,13 +1,5 @@
 open AlfrescoTalking;;
-open ArborescenceCowebo_t;;
-open ArborescenceCowebo_j;;
-open GetFileAndFolder_t;;
-open GetFileAndFolder_j;;
 open PortefeuilleElectronique_t;;
-(*open Upload_j;;*)
-open Upload_t;;
-(*open Flexigrid_t;;
-open Flexigrid_j;;*)
 open Cowebo_Config;;
 
 module L = BatList;;
@@ -343,14 +335,14 @@ let defini_CGI_Upload (cgi : Netcgi.cgi_activation) =
                                 (string_of_int (String.length (cgi#argument_value "content")))^";"^(Printexc.get_backtrace ()));
           (*TODO : gérer la taille, et plus tard le sha-1 !*)
           let cle         = cgi#argument_value "cle" in
-          let structure_info_upload =  { nom_fichier = cgi#argument_value "filename" ;
+          (*let structure_info_upload =  { nom_fichier = cgi#argument_value "filename" ;
                                   contentType = cgi#argument_value "contentType" ;
                                   content_upl = cgi#argument_value "content";
                                   base_nodeId = cgi#argument_value "nodeId";
                                   type_upload = cgi#argument_value "type_upload";
                                   filenametmp = "" ;
                                   size_upload = int_of_string  (cgi#argument_value "taille")
-                                } in
+                                } in*)
 
           cgi#output#output_string ("{\"id\":\"\"}");
           BDD.close_connection();

@@ -1,3 +1,0 @@
-type metaDataUserCwb = {
- cercles : string list
-}

@@ -282,22 +282,6 @@ let listTree lstOption = list2tree (deSome lstOption);;
 (****************************************************************************)
 
 
-let metadata_vide = {
-  ArborescenceCowebo_t.classif_tags           =[];
-  ArborescenceCowebo_t.etat_coffre_fichier    =ArborescenceCowebo_t.NonProtege;
-  ArborescenceCowebo_t.etat_signature_fichier =ArborescenceCowebo_t.NonSigne;
-  ArborescenceCowebo_t.empreinte_shaFichier   = ""
-};; 
-
-
-let classif_tag_vide = {
-  ArborescenceCowebo_t.type_classif  			= "";
-  ArborescenceCowebo_t.publique                         = true;
-  ArborescenceCowebo_t.auteur_login                     = "";
-  ArborescenceCowebo_t.valeur				= ""
-} 
-
-
 let cowebo_config_infos =
         Cowebo_Config.cowebo_config_infos;;
 

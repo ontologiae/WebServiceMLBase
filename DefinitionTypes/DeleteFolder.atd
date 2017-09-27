@@ -1,5 +1,0 @@
- type deleteFolder = {
-success  : bool;
-msg 		 : string;
-parentId : string;
-}
