@@ -178,22 +178,22 @@ let read_fileProperties = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_createPermission = ref (Obj.magic 0.0) in
-    let field_created = ref (Obj.magic 0.0) in
-    let field_creator = ref (Obj.magic 0.0) in
-    let field_deletePermission = ref (Obj.magic 0.0) in
-    let field_icon = ref (Obj.magic 0.0) in
-    let field_link = ref (Obj.magic 0.0) in
-    let field_modified = ref (Obj.magic 0.0) in
-    let field_msg = ref (Obj.magic 0.0) in
-    let field_name = ref (Obj.magic 0.0) in
-    let field_nodeId = ref (Obj.magic 0.0) in
-    let field_parentId = ref (Obj.magic 0.0) in
-    let field_path = ref (Obj.magic 0.0) in
-    let field_size = ref (Obj.magic 0.0) in
-    let field_success = ref (Obj.magic 0.0) in
-    let field_url = ref (Obj.magic 0.0) in
-    let field_writePermission = ref (Obj.magic 0.0) in
+    let field_createPermission = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_created = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_creator = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_deletePermission = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_icon = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_link = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_modified = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_msg = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_name = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeId = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_parentId = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_size = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_success = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_url = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_writePermission = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

@@ -95,13 +95,13 @@ let read_multipartContent = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_base_nodeId = ref (Obj.magic 0.0) in
-    let field_nom_fichier = ref (Obj.magic 0.0) in
-    let field_contentType = ref (Obj.magic 0.0) in
-    let field_content_upl = ref (Obj.magic 0.0) in
-    let field_filenametmp = ref (Obj.magic 0.0) in
-    let field_type_upload = ref (Obj.magic 0.0) in
-    let field_size_upload = ref (Obj.magic 0.0) in
+    let field_base_nodeId = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nom_fichier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_contentType = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_content_upl = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_filenametmp = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_type_upload = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_size_upload = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -438,8 +438,8 @@ let read_un_upload = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_date_Upl = ref (Obj.magic 0.0) in
-    let field_upload = ref (Obj.magic 0.0) in
+    let field_date_Upl = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_upload = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

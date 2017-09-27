@@ -110,15 +110,15 @@ let read_folder = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_createPermission = ref (Obj.magic 0.0) in
-    let field_deletePermission = ref (Obj.magic 0.0) in
-    let field_id = ref (Obj.magic 0.0) in
-    let field_link = ref (Obj.magic 0.0) in
-    let field_name = ref (Obj.magic 0.0) in
-    let field_parentPath = ref (Obj.magic 0.0) in
-    let field_text = ref (Obj.magic 0.0) in
-    let field_url = ref (Obj.magic 0.0) in
-    let field_writePermission = ref (Obj.magic 0.0) in
+    let field_createPermission = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_deletePermission = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_id = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_link = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_name = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_parentPath = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_text = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_url = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_writePermission = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

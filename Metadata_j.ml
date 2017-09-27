@@ -126,16 +126,16 @@ let read_properties_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_created = ref (Obj.magic 0.0) in
-    let field_creator = ref (Obj.magic 0.0) in
-    let field_modified = ref (Obj.magic 0.0) in
-    let field_modifier = ref (Obj.magic 0.0) in
-    let field_name = ref (Obj.magic 0.0) in
-    let field_owner = ref (Obj.magic 0.0) in
-    let field_node_dbid = ref (Obj.magic 0.0) in
-    let field_node_uuid = ref (Obj.magic 0.0) in
-    let field_store_identifier = ref (Obj.magic 0.0) in
-    let field_store_protocol = ref (Obj.magic 0.0) in
+    let field_created = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_creator = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_modified = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_modifier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_name = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_owner = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_node_dbid = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_node_uuid = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_store_identifier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_store_protocol = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -622,11 +622,11 @@ let read_metadata = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_aspects = ref (Obj.magic 0.0) in
-    let field_mimetype = ref (Obj.magic 0.0) in
-    let field_nodeRef = ref (Obj.magic 0.0) in
-    let field_properties = ref (Obj.magic 0.0) in
-    let field_type_p = ref (Obj.magic 0.0) in
+    let field_aspects = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_mimetype = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeRef = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_properties = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_type_p = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

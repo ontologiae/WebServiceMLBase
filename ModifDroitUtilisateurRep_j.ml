@@ -44,8 +44,8 @@ let read_permissions_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_authority = ref (Obj.magic 0.0) in
-    let field_role = ref (Obj.magic 0.0) in
+    let field_authority = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_role = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -248,8 +248,8 @@ let read_modifDroitUtilisateurRep = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_isInherited = ref (Obj.magic 0.0) in
-    let field_permissions = ref (Obj.magic 0.0) in
+    let field_isInherited = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_permissions = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

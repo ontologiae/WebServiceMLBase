@@ -47,8 +47,8 @@ let read_exception_msg = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_className = ref (Obj.magic 0.0) in
-    let field_message = ref (Obj.magic 0.0) in
+    let field_className = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_message = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -189,7 +189,7 @@ let read_cfec_message = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_nomDuHeader = ref (Obj.magic 0.0) in
+    let field_nomDuHeader = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -346,10 +346,10 @@ let read_retour_cfec = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_status = ref (Obj.magic 0.0) in
-    let field_exceptionMessages = ref (Obj.magic 0.0) in
-    let field_cfecMessages = ref (Obj.magic 0.0) in
-    let field_freeMessages = ref (Obj.magic 0.0) in
+    let field_status = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_exceptionMessages = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_cfecMessages = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_freeMessages = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

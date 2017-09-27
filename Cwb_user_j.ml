@@ -48,9 +48,9 @@ let read_cwb_user = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_login = ref (Obj.magic 0.0) in
-    let field_user_uuid = ref (Obj.magic 0.0) in
-    let field_password_salt = ref (Obj.magic 0.0) in
+    let field_login = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_user_uuid = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_password_salt = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

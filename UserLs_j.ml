@@ -280,32 +280,32 @@ let read_people_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_url = ref (Obj.magic 0.0) in
-    let field_userName = ref (Obj.magic 0.0) in
-    let field_enabled = ref (Obj.magic 0.0) in
-    let field_firstName = ref (Obj.magic 0.0) in
-    let field_lastName = ref (Obj.magic 0.0) in
-    let field_jobtitle = ref (Obj.magic 0.0) in
-    let field_organization = ref (Obj.magic 0.0) in
-    let field_location = ref (Obj.magic 0.0) in
-    let field_telephone = ref (Obj.magic 0.0) in
-    let field_mobile = ref (Obj.magic 0.0) in
-    let field_email = ref (Obj.magic 0.0) in
-    let field_companyaddress1 = ref (Obj.magic 0.0) in
-    let field_companyaddress2 = ref (Obj.magic 0.0) in
-    let field_companyaddress3 = ref (Obj.magic 0.0) in
-    let field_companypostcode = ref (Obj.magic 0.0) in
-    let field_companytelephone = ref (Obj.magic 0.0) in
-    let field_companyfax = ref (Obj.magic 0.0) in
-    let field_companyemail = ref (Obj.magic 0.0) in
-    let field_skype = ref (Obj.magic 0.0) in
-    let field_instantmsg = ref (Obj.magic 0.0) in
-    let field_userStatus = ref (Obj.magic 0.0) in
-    let field_userStatusTime = ref (Obj.magic 0.0) in
-    let field_googleusername = ref (Obj.magic 0.0) in
-    let field_quota = ref (Obj.magic 0.0) in
-    let field_sizeCurrent = ref (Obj.magic 0.0) in
-    let field_persondescription = ref (Obj.magic 0.0) in
+    let field_url = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_userName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_enabled = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_firstName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_lastName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_jobtitle = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_organization = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_location = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_telephone = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_mobile = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_email = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_companyaddress1 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_companyaddress2 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_companyaddress3 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_companypostcode = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_companytelephone = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_companyfax = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_companyemail = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_skype = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_instantmsg = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_userStatus = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_userStatusTime = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_googleusername = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_quota = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_sizeCurrent = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_persondescription = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1304,7 +1304,7 @@ let read_userls = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_people = ref (Obj.magic 0.0) in
+    let field_people = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

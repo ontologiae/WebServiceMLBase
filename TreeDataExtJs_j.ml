@@ -86,11 +86,11 @@ and read_itemTree = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_id = ref (Obj.magic 0.0) in
-    let field_text = ref (Obj.magic 0.0) in
-    let field_leaf = ref (Obj.magic 0.0) in
-    let field_cls = ref (Obj.magic 0.0) in
-    let field_children = ref (Obj.magic 0.0) in
+    let field_id = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_text = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_leaf = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_cls = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_children = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

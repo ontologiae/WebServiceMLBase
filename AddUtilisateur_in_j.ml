@@ -68,11 +68,11 @@ let read_addUtilisateur_In = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_userName = ref (Obj.magic 0.0) in
-    let field_firstName = ref (Obj.magic 0.0) in
-    let field_lastName = ref (Obj.magic 0.0) in
-    let field_email = ref (Obj.magic 0.0) in
-    let field_quota = ref (Obj.magic 0.0) in
+    let field_userName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_firstName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_lastName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_email = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_quota = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

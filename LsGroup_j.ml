@@ -90,13 +90,13 @@ let read_groupls_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_authorityType = ref (Obj.magic 0.0) in
-    let field_displayName = ref (Obj.magic 0.0) in
-    let field_fullName = ref (Obj.magic 0.0) in
-    let field_isAdminGroup = ref (Obj.magic 0.0) in
-    let field_isRootGroup = ref (Obj.magic 0.0) in
-    let field_shortName = ref (Obj.magic 0.0) in
-    let field_url = ref (Obj.magic 0.0) in
+    let field_authorityType = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_displayName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_fullName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_isAdminGroup = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_isRootGroup = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_shortName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_url = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -420,7 +420,7 @@ let read_lsGroup = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_data = ref (Obj.magic 0.0) in
+    let field_data = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

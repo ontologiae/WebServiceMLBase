@@ -58,10 +58,10 @@ let read_metadataCat = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_filename = ref (Obj.magic 0.0) in
-    let field_json = ref (Obj.magic 0.0) in
-    let field_mimetype = ref (Obj.magic 0.0) in
-    let field_erreurs = ref (Obj.magic 0.0) in
+    let field_filename = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_json = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_mimetype = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_erreurs = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

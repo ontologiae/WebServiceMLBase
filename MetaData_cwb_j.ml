@@ -111,6 +111,7 @@ let string_of_etat_signature ?(len = 1024) x =
 let read_etat_signature = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -254,6 +255,7 @@ let string_of_etat_coffre ?(len = 1024) x =
 let read_etat_coffre = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -480,8 +482,8 @@ let read_classif_tags_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_type_classif = ref (Obj.magic 0.0) in
-    let field_valeur = ref (Obj.magic 0.0) in
+    let field_type_classif = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_valeur = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -665,10 +667,10 @@ let read_metaData_cwb = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_classif_tags = ref (Obj.magic 0.0) in
-    let field_etat_coffre_fichier = ref (Obj.magic 0.0) in
-    let field_etat_signature_fichier = ref (Obj.magic 0.0) in
-    let field_empreinte_shaFichier = ref (Obj.magic 0.0) in
+    let field_classif_tags = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_etat_coffre_fichier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_etat_signature_fichier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_empreinte_shaFichier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

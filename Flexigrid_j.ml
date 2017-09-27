@@ -60,8 +60,8 @@ let read_item_flexigrid = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_id = ref (Obj.magic 0.0) in
-    let field_cell = ref (Obj.magic 0.0) in
+    let field_id = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_cell = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -236,9 +236,9 @@ let read_flexigrid = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_page = ref (Obj.magic 0.0) in
-    let field_total = ref (Obj.magic 0.0) in
-    let field_rows = ref (Obj.magic 0.0) in
+    let field_page = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_total = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_rows = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

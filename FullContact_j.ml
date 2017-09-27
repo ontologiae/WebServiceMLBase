@@ -102,8 +102,8 @@ let read_topics_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_provider2 = ref (Obj.magic 0.0) in
-    let field_value2 = ref (Obj.magic 0.0) in
+    let field_provider2 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_value2 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -316,15 +316,15 @@ let read_socialProfiles_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_bio = ref (Obj.magic 0.0) in
-    let field_followers = ref (Obj.magic 0.0) in
-    let field_following = ref (Obj.magic 0.0) in
-    let field_id = ref (Obj.magic 0.0) in
-    let field_tyype3 = ref (Obj.magic 0.0) in
-    let field_typeId2 = ref (Obj.magic 0.0) in
-    let field_typeName2 = ref (Obj.magic 0.0) in
-    let field_url3 = ref (Obj.magic 0.0) in
-    let field_username = ref (Obj.magic 0.0) in
+    let field_bio = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_followers = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_following = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_id = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_tyype3 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_typeId2 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_typeName2 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_url3 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_username = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -746,9 +746,9 @@ let read_scores_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_provider = ref (Obj.magic 0.0) in
-    let field_tyype = ref (Obj.magic 0.0) in
-    let field_value = ref (Obj.magic 0.0) in
+    let field_provider = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_tyype = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_value = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -968,11 +968,11 @@ let read_photos_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_isPrimary2 = ref (Obj.magic 0.0) in
-    let field_tyype2 = ref (Obj.magic 0.0) in
-    let field_typeId = ref (Obj.magic 0.0) in
-    let field_typeName = ref (Obj.magic 0.0) in
-    let field_urlphoto = ref (Obj.magic 0.0) in
+    let field_isPrimary2 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_tyype2 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_typeId = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_typeName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_urlphoto = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1224,9 +1224,9 @@ let read_organizations_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_isPrimary = ref (Obj.magic 0.0) in
-    let field_name = ref (Obj.magic 0.0) in
-    let field_title = ref (Obj.magic 0.0) in
+    let field_isPrimary = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_name = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_title = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1439,8 +1439,8 @@ let read_digitalFootprint_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_scores = ref (Obj.magic 0.0) in
-    let field_topics = ref (Obj.magic 0.0) in
+    let field_scores = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_topics = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1600,8 +1600,8 @@ let read_demographics_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_gender = ref (Obj.magic 0.0) in
-    let field_locationGeneral = ref (Obj.magic 0.0) in
+    let field_gender = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_locationGeneral = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1751,8 +1751,8 @@ let read_chats_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_client = ref (Obj.magic 0.0) in
-    let field_htypele = ref (Obj.magic 0.0) in
+    let field_client = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_htypele = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1961,11 +1961,11 @@ let read_contactInfo_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_chats = ref (Obj.magic 0.0) in
-    let field_familyName = ref (Obj.magic 0.0) in
-    let field_fullName = ref (Obj.magic 0.0) in
-    let field_givenName = ref (Obj.magic 0.0) in
-    let field_websites = ref (Obj.magic 0.0) in
+    let field_chats = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_familyName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_fullName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_givenName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_websites = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -2331,15 +2331,15 @@ let read_fullContacts = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_contactInfo = ref (Obj.magic 0.0) in
-    let field_demographics = ref (Obj.magic 0.0) in
-    let field_digitalFootprint = ref (Obj.magic 0.0) in
-    let field_likelihood = ref (Obj.magic 0.0) in
-    let field_organizations = ref (Obj.magic 0.0) in
-    let field_photos = ref (Obj.magic 0.0) in
-    let field_requestId = ref (Obj.magic 0.0) in
-    let field_socialProfiles = ref (Obj.magic 0.0) in
-    let field_status = ref (Obj.magic 0.0) in
+    let field_contactInfo = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_demographics = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_digitalFootprint = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_likelihood = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_organizations = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_photos = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_requestId = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_socialProfiles = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_status = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

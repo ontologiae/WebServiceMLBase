@@ -8,7 +8,8 @@ module S = BatString;;
 (************ CONSTANTES ************)
 (************ CONSTANTES ************)
 
-(** Ce module propose divers utilitaires (logging, fonctions date simple, ...) *)
+(** Ce module propose divers utilitaires (logging, fonctions date simple, ... )
+ **)
 
 
 

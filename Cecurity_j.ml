@@ -84,12 +84,12 @@ let read_safes_cc = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_id_safecc = ref (Obj.magic 0.0) in
-    let field_name_cc = ref (Obj.magic 0.0) in
-    let field_uid_cc = ref (Obj.magic 0.0) in
-    let field_profilId = ref (Obj.magic 0.0) in
-    let field_profilRights = ref (Obj.magic 0.0) in
-    let field_profilDesc = ref (Obj.magic 0.0) in
+    let field_id_safecc = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_name_cc = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_uid_cc = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_profilId = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_profilRights = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_profilDesc = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -388,9 +388,9 @@ let read_creat_user_cc = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_cFEC_VERSION = ref (Obj.magic 0.0) in
-    let field_safes = ref (Obj.magic 0.0) in
-    let field_status_cc = ref (Obj.magic 0.0) in
+    let field_cFEC_VERSION = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_safes = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_status_cc = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

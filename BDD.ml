@@ -103,7 +103,6 @@ let getOrElse get orElse =
 
 
 
-
 (** Vérifie les paramètres de la requêtes afin de prévenir toute tentative d'injection SQL
     @param params les paramètres de la requête
     @return vrai si les paramètres sont sans danger*)
@@ -117,6 +116,7 @@ let parametres_SQL_sains params =
   not (L.exists danger_detecte (Array.to_list params))
 
 
+  
 (** Permet d'envoyer une requête avec paramètres (plus sûr que la concaténation de chaînes*)
 let execute_requete_SQL_avec_params  (connecteur : Postgresql.connection) req params = 
   let requete_sans_danger =  parametres_SQL_sains  params in
@@ -143,7 +143,9 @@ let execute_requete_SQL_avec_params  (connecteur : Postgresql.connection) req pa
         )
           (*Tentative d'injection SQL, on affiche l'alerte*)
     | false -> let errmsg =  ("[ALERTE] Tentative d'injection SQL !!\nParamètres = -- "^(String.concat " -- ; -- " (Array.to_list params))^" --") in
+    (errmsg,-1, [])
 
+ 
 
 (** Fonction dédiées aux requêtes unilignes. 
     @return une string list option de la ligne SQL calculée*)
@@ -154,7 +156,7 @@ let execute_requete_SQL_uniligne_avec_params  (connecteur : Postgresql.connectio
     | 1 -> (err,1,(L.hd result) )
     | _ -> ("Non uniligne !\n"^err,taille,(L.hd result) )
 
-(*
+
 
 (** Exécute une requête SQL, adaptée pour une retour contenant un seul élément*)
 let execute_requete_SQL_unielement_avec_params (connecteur : Postgresql.connection) req params = 
@@ -488,4 +490,6 @@ let get_iddossier_nom_from_nodeid_dossier nodeid_dossier =
 
 
 
-*)
+
+
+

@@ -268,31 +268,31 @@ let read_cowebo_Config = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_bddhote = ref (Obj.magic 0.0) in
-    let field_bddnombase = ref (Obj.magic 0.0) in
-    let field_bdduser = ref (Obj.magic 0.0) in
-    let field_bddpass = ref (Obj.magic 0.0) in
-    let field_couchbaseHost = ref (Obj.magic 0.0) in
-    let field_couchbasePort = ref (Obj.magic 0.0) in
-    let field_tmppath = ref (Obj.magic 0.0) in
-    let field_curlpath = ref (Obj.magic 0.0) in
-    let field_shasumpath = ref (Obj.magic 0.0) in
-    let field_path_certificat_maitre = ref (Obj.magic 0.0) in
-    let field_path_certificat_pem_public = ref (Obj.magic 0.0) in
-    let field_path_certificat_pem = ref (Obj.magic 0.0) in
-    let field_url_activation = ref (Obj.magic 0.0) in
-    let field_path_base64 = ref (Obj.magic 0.0) in
-    let field_path_curl = ref (Obj.magic 0.0) in
-    let field_path_sendmail = ref (Obj.magic 0.0) in
-    let field_hostAlfresco = ref (Obj.magic 0.0) in
-    let field_alfPass = ref (Obj.magic 0.0) in
-    let field_messageOuvertureCompte = ref (Obj.magic 0.0) in
-    let field_path_html_confirm_compte = ref (Obj.magic 0.0) in
-    let field_sujet_courriel_activation_compte = ref (Obj.magic 0.0) in
-    let field_nodeid_racine_alfresco = ref (Obj.magic 0.0) in
-    let field_path_Certif_Cowebo = ref (Obj.magic 0.0) in
-    let field_path_Pass_Certif_Cwb = ref (Obj.magic 0.0) in
-    let field_pathJSignPDF = ref (Obj.magic 0.0) in
+    let field_bddhote = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_bddnombase = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_bdduser = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_bddpass = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_couchbaseHost = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_couchbasePort = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_tmppath = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_curlpath = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_shasumpath = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path_certificat_maitre = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path_certificat_pem_public = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path_certificat_pem = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_url_activation = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path_base64 = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path_curl = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path_sendmail = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_hostAlfresco = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_alfPass = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_messageOuvertureCompte = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path_html_confirm_compte = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_sujet_courriel_activation_compte = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeid_racine_alfresco = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path_Certif_Cowebo = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path_Pass_Certif_Cwb = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_pathJSignPDF = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

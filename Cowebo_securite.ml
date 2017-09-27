@@ -76,23 +76,11 @@ let add_utilisateur_bdd (cwb_user, prenom_reel, nom_reel, cwb_pass, email, mobil
   let open Cowebo_Config_t in
   let pathcertif = Cowebo_Config.get_val_par_cle Path_certificat_maitre in
   let certif = Netencoding.Base64.encode (Utils.file2string (Utils.pwd^"/"^pathcertif)) in
-
-  let nouvocfe = (*TODO : insérer ici le test de coffre non existant*)
-    let noucfe_id = Cowebo_CoffreFort.getSubSetIDFromList (Cowebo_CoffreFort.creer_coffre (nom_reel^"___"^alf_user)) in
-      match noucfe_id with
-        | Cowebo_CoffreFort.CFEC_SUBSET_ID id -> (string_of_int id)
-        | _                 -> failwith "E???: Erreur lors de la création du coffre" in
-  (*CREATE OR REPLACE FUNCTION add_utilisateur_bdd(cwb_userp text, prenom_reelp
-   * text, nom_reelp text, cwb_passp text, emailp text, mobilep text, alf_userp
-   * text, alf_passp text, nodeidbasep text, nodeidpartagep text,
-   * nodeidportefeuillep text, portefeuillep text, certificatp text, idcfep
-   * integer, loginsociete)
-  *)
-  let insert_coffre = "select add_utilisateur_bdd($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)" in  
+   let insert_coffre = "select add_utilisateur_bdd($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)" in  
   let (er,tail,result) = BDD.execute_requete_SQL_uniligne_avec_params 
       connexion
       insert_coffre
-      [|cwb_user;prenom_reel;nom_reel;cwb_pass;email;mobile;alf_user;alf_pass;nodeIDBase;nodeIDPartage;nodeIDPortefeuille;portefeuille;certif;nouvocfe;loginSociet|] in
+      [|cwb_user;prenom_reel;nom_reel;cwb_pass;email;mobile;alf_user;alf_pass;nodeIDBase;nodeIDPartage;nodeIDPortefeuille;portefeuille;certif;"";loginSociet|] in
     (er = "");;
 
 (** GESTION DES UTILISATEURS ET MAITRE DES CLÉS*)
@@ -188,36 +176,6 @@ let genere_salt login =
   in
     add_dans_hash_login_salt login salt;
     salt;;
-
-
-
-
-(** Création d'un utilisateur Alfresco avec renvoi du NodeIDHome, création du dossier partage *)
-let creeEspaceutilisateur alf_user alf_pass nom_reel prenom_reel email =  
-  let new_userAlf = { 
-    model_create_user with 
-      CreateUser_t.userName   = alf_user   ; 
-      CreateUser_t.password   = alf_pass   ;
-      CreateUser_t.lastName   = nom_reel   ;
-      CreateUser_t.firstName  = prenom_reel;
-      CreateUser_t.email      = email
-  } in (** TODO : gérer d'autres infos : mails, groupes, etc...*)
-  let open AlfrescoTalking.AlfrescoAPI in
-  let (*nouvel_utilisateur*) _ = addUtilisateur ~userInfo:new_userAlf ~logpass:(logAdminAlfresco ()) in
-  let nodeHomeBrut,nodePartageBrut, nodePortefeuille = creeEnvironnementPartage ~logpass:(alf_user,alf_pass)  in
-  let nodeHome, nodePartage, nodePortefeuille  = 
-    match (nodeHomeBrut,nodePartageBrut, nodePortefeuille) with
-      | NoeudID h, NoeudID p, NoeudID p2 -> (h,  p, p2)
-      | _                    -> Utils.erreur "add_utilisateur a échoué : la fonction creeEspaceutilisateur n'a pas su renvoyer un utilisateur normé";
-          failwith "add_utilisateur a échoué : la fonction creeEspaceutilisateur n'a pas su renvoyer un utilisateur normé" in
-    (*PR #0000112 : AJout d'un dossier PortefeuilleElectronique*)
-    (*  let _ = AlfrescoTalking.AlfrescoAPI.createFolder  ~nom:"PortefeuilleElectronique" ~nodeID:nodeHome ~logpass:(alf_user,alf_pass) in*)
-    nodeHome, nodePartage, nodePortefeuille;;
-
-
-
-
-
 
 
 

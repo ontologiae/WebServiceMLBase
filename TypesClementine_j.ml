@@ -104,10 +104,10 @@ let read_partage = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_id_fichier = ref (Obj.magic 0.0) in
-    let field_nodeidlien = ref (Obj.magic 0.0) in
-    let field_nodeidoriginal = ref (Obj.magic 0.0) in
-    let field_date_partage = ref (Obj.magic 0.0) in
+    let field_id_fichier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeidlien = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeidoriginal = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_date_partage = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -401,14 +401,14 @@ let read_utilisateur_cercle = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_prenom_c = ref (Obj.magic 0.0) in
-    let field_nom_c = ref (Obj.magic 0.0) in
-    let field_login_c = ref (Obj.magic 0.0) in
-    let field_id_userc = ref (Obj.magic 0.0) in
-    let field_alfl_c = ref (Obj.magic 0.0) in
-    let field_alfp_c = ref (Obj.magic 0.0) in
-    let field_id_cercle_user = ref (Obj.magic 0.0) in
-    let field_listePartages = ref (Obj.magic 0.0) in
+    let field_prenom_c = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nom_c = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_login_c = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_id_userc = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_alfl_c = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_alfp_c = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_id_cercle_user = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_listePartages = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -796,10 +796,10 @@ let read_signataire = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_nom_complet_signataire = ref (Obj.magic 0.0) in
-    let field_login_signataire = ref (Obj.magic 0.0) in
-    let field_email_signataire = ref (Obj.magic 0.0) in
-    let field_a_signe = ref (Obj.magic 0.0) in
+    let field_nom_complet_signataire = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_login_signataire = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_email_signataire = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_a_signe = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1057,10 +1057,10 @@ let read_piece = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_nom_fichier_piece = ref (Obj.magic 0.0) in
-    let field_nom_logique_piece = ref (Obj.magic 0.0) in
-    let field_nodeid_fichier = ref (Obj.magic 0.0) in
-    let field_signataires = ref (Obj.magic 0.0) in
+    let field_nom_fichier_piece = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nom_logique_piece = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeid_fichier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_signataires = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1337,11 +1337,11 @@ let read_infos_etat_contrat = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_nom_contrat = ref (Obj.magic 0.0) in
-    let field_nodeid_contrat = ref (Obj.magic 0.0) in
-    let field_createur_login = ref (Obj.magic 0.0) in
-    let field_createur_email = ref (Obj.magic 0.0) in
-    let field_pieces_a_signer = ref (Obj.magic 0.0) in
+    let field_nom_contrat = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeid_contrat = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_createur_login = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_createur_email = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_pieces_a_signer = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1706,16 +1706,16 @@ let read_cercleInfos = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_nom_cercle = ref (Obj.magic 0.0) in
-    let field_idCercle = ref (Obj.magic 0.0) in
-    let field_date_creation_cercle = ref (Obj.magic 0.0) in
-    let field_login_createur = ref (Obj.magic 0.0) in
-    let field_id_createur = ref (Obj.magic 0.0) in
-    let field_nom_createur = ref (Obj.magic 0.0) in
-    let field_prenom_createur = ref (Obj.magic 0.0) in
-    let field_alflCreateur = ref (Obj.magic 0.0) in
-    let field_alfpcreateur = ref (Obj.magic 0.0) in
-    let field_liste_utilisateurs_c = ref (Obj.magic 0.0) in
+    let field_nom_cercle = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_idCercle = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_date_creation_cercle = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_login_createur = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_id_createur = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nom_createur = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_prenom_createur = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_alflCreateur = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_alfpcreateur = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_liste_utilisateurs_c = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

@@ -123,6 +123,7 @@ let string_of_typeDePersonneSimple ?(len = 1024) x =
 let read_typeDePersonneSimple = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -298,10 +299,10 @@ let read_societeInfo = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_raison_sociale = ref (Obj.magic 0.0) in
-    let field_email_societe = ref (Obj.magic 0.0) in
-    let field_contenu_certificat = ref (Obj.magic 0.0) in
-    let field_password_certificat = ref (Obj.magic 0.0) in
+    let field_raison_sociale = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_email_societe = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_contenu_certificat = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_password_certificat = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -558,13 +559,13 @@ let read_personnePhysique = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_nomPersPhys = ref (Obj.magic 0.0) in
-    let field_prenomPersPhys = ref (Obj.magic 0.0) in
-    let field_mobilePersPhys = ref (Obj.magic 0.0) in
-    let field_emailPersPhys = ref (Obj.magic 0.0) in
-    let field_idPieceIdent = ref (Obj.magic 0.0) in
-    let field_societeMerePhys = ref (Obj.magic 0.0) in
-    let field_codepinPhys = ref (Obj.magic 0.0) in
+    let field_nomPersPhys = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_prenomPersPhys = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_mobilePersPhys = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_emailPersPhys = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_idPieceIdent = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_societeMerePhys = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_codepinPhys = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -929,12 +930,12 @@ let read_personneMorale = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_loginSocieteMere = ref (Obj.magic 0.0) in
-    let field_nomPersMorale = ref (Obj.magic 0.0) in
-    let field_prenomPersMorale = ref (Obj.magic 0.0) in
-    let field_mobilePersMoral = ref (Obj.magic 0.0) in
-    let field_emailPersMorale = ref (Obj.magic 0.0) in
-    let field_codepinMorale = ref (Obj.magic 0.0) in
+    let field_loginSocieteMere = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nomPersMorale = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_prenomPersMorale = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_mobilePersMoral = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_emailPersMorale = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_codepinMorale = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1241,6 +1242,7 @@ let string_of_typeDePersonne ?(len = 1024) x =
 let read_typeDePersonne = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -1449,9 +1451,9 @@ let read_infosTel = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_num = ref (Obj.magic 0.0) in
-    let field_confirme_tel = ref (Obj.magic 0.0) in
-    let field_date_confirme_tel = ref (Obj.magic 0.0) in
+    let field_num = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_confirme_tel = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_date_confirme_tel = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1641,9 +1643,9 @@ let read_infosEmail = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_email = ref (Obj.magic 0.0) in
-    let field_confirme_mail = ref (Obj.magic 0.0) in
-    let field_date_confirme_mail = ref (Obj.magic 0.0) in
+    let field_email = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_confirme_mail = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_date_confirme_mail = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1842,10 +1844,10 @@ let read_infosCertificat = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_certificat_nodeid = ref (Obj.magic 0.0) in
-    let field_certificat_pass_nodeid = ref (Obj.magic 0.0) in
-    let field_confirme_cert = ref (Obj.magic 0.0) in
-    let field_date_confirme_cert = ref (Obj.magic 0.0) in
+    let field_certificat_nodeid = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_certificat_pass_nodeid = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_confirme_cert = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_date_confirme_cert = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -2054,6 +2056,7 @@ let string_of_typeDeDonnee ?(len = 1024) x =
 let read_typeDeDonnee = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -2244,7 +2247,7 @@ let read_portefeuilleElectronique_donnee = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_typePersonne = ref (Obj.magic 0.0) in
+    let field_typePersonne = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -2370,7 +2373,7 @@ let read_infoDonnee = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_typeData = ref (Obj.magic 0.0) in
+    let field_typeData = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -2595,18 +2598,18 @@ let read_infosUtilisateurProvisoire = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field__CLE_DE_VALIDATION = ref (Obj.magic 0.0) in
-    let field_cwbloginProvisoir = ref (Obj.magic 0.0) in
-    let field_passProvisoir = ref (Obj.magic 0.0) in
-    let field_nomReelProvisoir = ref (Obj.magic 0.0) in
-    let field_prenomReelProvisoir = ref (Obj.magic 0.0) in
-    let field_emailProvisoir = ref (Obj.magic 0.0) in
-    let field_mobileProvisoir = ref (Obj.magic 0.0) in
-    let field_raison_socialeProvisoir = ref (Obj.magic 0.0) in
-    let field_contenu_certificatProvisoir = ref (Obj.magic 0.0) in
-    let field_password_certificatProvisoir = ref (Obj.magic 0.0) in
-    let field_loginSocieteMereProvisoir = ref (Obj.magic 0.0) in
-    let field_typeDeCompte = ref (Obj.magic 0.0) in
+    let field__CLE_DE_VALIDATION = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_cwbloginProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_passProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nomReelProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_prenomReelProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_emailProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_mobileProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_raison_socialeProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_contenu_certificatProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_password_certificatProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_loginSocieteMereProvisoir = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_typeDeCompte = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -3261,20 +3264,20 @@ let read_infosUtilisateur = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_cwbuser = ref (Obj.magic 0.0) in
-    let field_alfl = ref (Obj.magic 0.0) in
-    let field_alfp = ref (Obj.magic 0.0) in
-    let field_portefeuille = ref (Obj.magic 0.0) in
-    let field_userID = ref (Obj.magic 0.0) in
-    let field_nodeIDbase = ref (Obj.magic 0.0) in
-    let field_nodeIDPartage = ref (Obj.magic 0.0) in
-    let field_idcoffre = ref (Obj.magic 0.0) in
-    let field_cfe = ref (Obj.magic 0.0) in
-    let field_certificat = ref (Obj.magic 0.0) in
-    let field_password = ref (Obj.magic 0.0) in
-    let field_societe = ref (Obj.magic 0.0) in
-    let field_codepinUser = ref (Obj.magic 0.0) in
-    let field_liste2Dossier = ref (Obj.magic 0.0) in
+    let field_cwbuser = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_alfl = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_alfp = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_portefeuille = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_userID = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeIDbase = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeIDPartage = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_idcoffre = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_cfe = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_certificat = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_password = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_societe = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_codepinUser = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_liste2Dossier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

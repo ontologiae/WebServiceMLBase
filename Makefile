@@ -87,6 +87,20 @@ doc : all
 
 
 
+base: atds types
+	ocamlfind ocamlopt -c  -g -warn-error "+8+11+14+20"  -package "netstring,netstring-pcre,cryptokit,batteries" Cowebo_Config.cmx Utils.ml
+	ocamlfind ocamlopt -c  -g -warn-error "+8+11+14+20"  -thread Cowebo_Config.ml
+	ocamlfind ocamlopt -c  -g -warn-error "+8+11+14+20"  -thread Cowebo_Config.cmx Utils.cmx  Memcache.ml
+	ocamlfind ocamlopt -c  -g -warn-error "+11+14+20"  -package "postgresql,cryptokit,batteries" -thread Cowebo_Config_t.cmx Cowebo_Config_j.cmx Memcache.cmx Cowebo_Config.cmx  BDD.ml
+	ocamlfind ocamlopt -c  -g  -warn-error "+8+11+14+20" -package "postgresql,cryptokit,batteries,netstring,netstring-pcre" -thread   Utils.cmx  Memcache.cmx  BDD.cmx Cowebo_securite.ml	
+	ocamlfind ocamlopt -c  -g  -warn-error "+8+11+14+20" -package "netstring,netstring-pcre,netclient,atdgen,batteries,ssl"  Cowebo_Config.cmx Utils.cmx *_j.cmx Memcache.cmx BDD.cmx Classif_Tags.cmx AlfrescoTalking.ml
+	ocamlfind ocamlopt -c  -g  -warn-error "+8+11+14+20" -package "netstring,netstring-pcre,netcgi2,nethttpd,netclient,atdgen,postgresql,cryptokit,batteries"  -thread Utils.cmx Cowebo_Erreurs.cmx   Memcache.cmx  BDD.cmx  Cowebo_Erreurs.cmx Cowebo_CGI.ml
+	ocamlfind ocamlopt -c  -g  -warn-error "+8+11+14+20"  -package "netstring,netcgi2,nethttpd,netplex,netclient,atdgen,batteries" *.cmx Cowebo_MAIN.ml 
+	ocamlfind ocamlopt -g  -o   sign   -package "netstring,netstring-pcre,netcgi2,nethttpd,netplex,netclient,atdgen,postgresql,cryptokit,batteries"   -thread -linkpkg *_t.cmx AddUtilisateur_in_j.cmx AddUtilisateur_out_j.cmx  TypesMandarine_j.cmx ArborescenceCowebo_j.cmx Cowebo_Config_j.cmx CreateFolder_j.cmx CreateUser_j.cmx CreationDossier_j.cmx CreerGroupeRacine_j.cmx DeleteFolder_j.cmx FileProperties_j.cmx Flexigrid_j.cmx GetFileAndFolder_j.cmx GetFolder_j.cmx GetGroupTree_j.cmx GroupInfo_j.cmx LsGroup_j.cmx TypesClementine_j.cmx MetaDataUserCwb_j.cmx MetaData_cwb_j.cmx MetadataCat_j.cmx MetadataEdit_j.cmx PortefeuilleElectronique_j.cmx ProprietesFichier_j.cmx  Upload_j.cmx UserInfo_j.cmx UserLs_j.cmx  FullContact_j.cmx Cowebo_Config.cmx Utils.cmx Memcache.cmx BDD.cmx Cowebo_securite.cmx Cowebo_Erreurs.cmx  AlfrescoTalking.cmx  Cowebo_CGI.cmx  Cowebo_MAIN.cmx
+
+
+
+
 
 
 sign:  atds types

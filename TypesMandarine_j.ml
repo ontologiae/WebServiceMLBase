@@ -141,6 +141,7 @@ let string_of__10 ?(len = 1024) x =
 let read__10 = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -371,6 +372,7 @@ let string_of_prive_ou_publique ?(len = 1024) x =
 let read_prive_ou_publique = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -712,6 +714,7 @@ let string_of_nomSpeciaux ?(len = 1024) x =
 let read_nomSpeciaux = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -1965,6 +1968,7 @@ let string_of_verbeSpeciaux ?(len = 1024) x =
 let read_verbeSpeciaux = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -2478,6 +2482,7 @@ and string_of_ordre ?(len = 1024) x =
 let rec read_mot = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -2672,10 +2677,10 @@ and read_ordre = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_sujet = ref (Obj.magic 0.0) in
-    let field_verbe = ref (Obj.magic 0.0) in
-    let field_complementObjet = ref (Obj.magic 0.0) in
-    let field_complementObjetIndirect = ref (Obj.magic 0.0) in
+    let field_sujet = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_verbe = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_complementObjet = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_complementObjetIndirect = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -3132,6 +3137,7 @@ and string_of_msg ?(len = 1024) x =
 let rec read__11 = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -3260,14 +3266,14 @@ and read_contact_cowebo = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_login = ref (Obj.magic 0.0) in
-    let field_prenom = ref (Obj.magic 0.0) in
-    let field_telephone = ref (Obj.magic 0.0) in
-    let field_nom = ref (Obj.magic 0.0) in
-    let field_email = ref (Obj.magic 0.0) in
-    let field_cercles = ref (Obj.magic 0.0) in
-    let field_messages_recus = ref (Obj.magic 0.0) in
-    let field_messages_envoyes = ref (Obj.magic 0.0) in
+    let field_login = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_prenom = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_telephone = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nom = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_email = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_cercles = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_messages_recus = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_messages_envoyes = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -3591,16 +3597,16 @@ and read_msg = (
     let field_sujet_flat = ref (None) in
     let field_complem_flat = ref (None) in
     let field_complem2_flat = ref (None) in
-    let field_lu = ref (Obj.magic 0.0) in
-    let field_id_message = ref (Obj.magic 0.0) in
-    let field_objetMessage = ref (Obj.magic 0.0) in
-    let field_messageContenu = ref (Obj.magic 0.0) in
-    let field_emetteur = ref (Obj.magic 0.0) in
+    let field_lu = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_id_message = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_objetMessage = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_messageContenu = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_emetteur = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let field_emetteurR = ref (None) in
-    let field_date_msg = ref (Obj.magic 0.0) in
-    let field_destinatairesU = ref (Obj.magic 0.0) in
-    let field_destinatairesC = ref (Obj.magic 0.0) in
-    let field_ordres = ref (Obj.magic 0.0) in
+    let field_date_msg = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_destinatairesU = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_destinatairesC = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_ordres = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -4217,7 +4223,7 @@ let read_nom_piece = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_nom_piece = ref (Obj.magic 0.0) in
+    let field_nom_piece = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -4324,8 +4330,8 @@ let read_dossier_pieces = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_nom_dossier = ref (Obj.magic 0.0) in
-    let field_listePieces = ref (Obj.magic 0.0) in
+    let field_nom_dossier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_listePieces = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -4529,8 +4535,8 @@ let read_dossier_type = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_nom_dossier_type = ref (Obj.magic 0.0) in
-    let field_liste_pieces = ref (Obj.magic 0.0) in
+    let field_nom_dossier_type = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_liste_pieces = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

@@ -108,15 +108,15 @@ let read_rsa_key = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_size = ref (Obj.magic 0.0) in
-    let field_n = ref (Obj.magic 0.0) in
-    let field_e = ref (Obj.magic 0.0) in
-    let field_d = ref (Obj.magic 0.0) in
-    let field_p = ref (Obj.magic 0.0) in
-    let field_q = ref (Obj.magic 0.0) in
-    let field_dp = ref (Obj.magic 0.0) in
-    let field_dq = ref (Obj.magic 0.0) in
-    let field_qinv = ref (Obj.magic 0.0) in
+    let field_size = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_n = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_e = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_d = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_p = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_q = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_dp = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_dq = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_qinv = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;

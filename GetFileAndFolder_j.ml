@@ -156,14 +156,14 @@ and read_ls = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_basePath = ref (Obj.magic 0.0) in
-    let field_noeudID = ref (Obj.magic 0.0) in
-    let field_type_fichier = ref (Obj.magic 0.0) in
-    let field_nom = ref (Obj.magic 0.0) in
-    let field_dateCreat = ref (Obj.magic 0.0) in
-    let field_dateModif = ref (Obj.magic 0.0) in
-    let field_droitCRUD = ref (Obj.magic 0.0) in
-    let field_sousReps = ref (Obj.magic 0.0) in
+    let field_basePath = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_noeudID = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_type_fichier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nom = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_dateCreat = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_dateModif = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_droitCRUD = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_sousReps = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -538,6 +538,7 @@ let string_of_type_fichier_t ?(len = 1024) x =
 let read_type_fichier_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
+    
     match Yojson.Safe.start_any_variant p lb with
       | `Edgy_bracket -> (
           Yojson.Safe.read_space p lb;
@@ -924,31 +925,31 @@ let read_rows_t = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_author = ref (Obj.magic 0.0) in
-    let field_createPermission = ref (Obj.magic 0.0) in
-    let field_created = ref (Obj.magic 0.0) in
-    let field_creator = ref (Obj.magic 0.0) in
-    let field_deletePermission = ref (Obj.magic 0.0) in
-    let field_description = ref (Obj.magic 0.0) in
-    let field_downloadUrl = ref (Obj.magic 0.0) in
-    let field_editable = ref (Obj.magic 0.0) in
-    let field_isFolder = ref (Obj.magic 0.0) in
-    let field_isWorkingCopy = ref (Obj.magic 0.0) in
-    let field_link = ref (Obj.magic 0.0) in
-    let field_locked = ref (Obj.magic 0.0) in
-    let field_mimetype = ref (Obj.magic 0.0) in
-    let field_modified = ref (Obj.magic 0.0) in
-    let field_modifier = ref (Obj.magic 0.0) in
-    let field_name = ref (Obj.magic 0.0) in
-    let field_nodeId = ref (Obj.magic 0.0) in
-    let field_parentId = ref (Obj.magic 0.0) in
-    let field_parentPath = ref (Obj.magic 0.0) in
-    let field_size = ref (Obj.magic 0.0) in
-    let field_title = ref (Obj.magic 0.0) in
-    let field_url = ref (Obj.magic 0.0) in
-    let field_version = ref (Obj.magic 0.0) in
-    let field_versionable = ref (Obj.magic 0.0) in
-    let field_writePermission = ref (Obj.magic 0.0) in
+    let field_author = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_createPermission = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_created = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_creator = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_deletePermission = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_description = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_downloadUrl = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_editable = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_isFolder = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_isWorkingCopy = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_link = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_locked = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_mimetype = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_modified = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_modifier = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_name = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_nodeId = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_parentId = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_parentPath = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_size = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_title = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_url = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_version = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_versionable = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_writePermission = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
@@ -1992,13 +1993,13 @@ let read_main = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
     Yojson.Safe.read_lcurl p lb;
-    let field_folderId = ref (Obj.magic 0.0) in
-    let field_folderName = ref (Obj.magic 0.0) in
-    let field_msg = ref (Obj.magic 0.0) in
-    let field_path = ref (Obj.magic 0.0) in
-    let field_rows = ref (Obj.magic 0.0) in
-    let field_success = ref (Obj.magic 0.0) in
-    let field_total = ref (Obj.magic 0.0) in
+    let field_folderId = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_folderName = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_msg = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_path = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_rows = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_success = ref (Obj.magic (Sys.opaque_identity 0.0)) in
+    let field_total = ref (Obj.magic (Sys.opaque_identity 0.0)) in
     let bits0 = ref 0 in
     try
       Yojson.Safe.read_space p lb;
