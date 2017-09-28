@@ -9,6 +9,23 @@ module O = BatOption;;
 module H = BatHashtbl;;
 
 
+let rec union m = function
+  | []          -> m
+  | t :: q      -> t :: (union (L.remove  m t) q);;
+
+let rec intersect m = function
+  | []          -> []
+  | t::q when L.mem t m -> t :: (intersect (L.remove m t) q)
+  | t :: q      -> intersect m q;;
+
+let rec difference  m1 m2 = match m1 with
+  | []          -> []
+  | t::q when L.mem t m2 -> difference q (L.remove m2 t)
+  | t::q        -> t::(difference  q m2);;
+
+
+
+
 type memoireGlobale = {
         mutable modeBurst : bool;
         mutable dernierCours : tickMarket list; (* La liste des avant dernier cours, pour comparer*)
@@ -36,16 +53,35 @@ let retComparable avantDernierCours cours =
         (*TODO gérer Not Found*)
 
 
+let detectChangement comparable = 
+        (*let comparable = retComparable !maMemoire.dernierCours !maMemoire.coursCourant in*)
+        Printf.printf "comparable.size=%d\n" (L.length comparable);
+        (* Volume ++ ?*)
+        let vols = L.filter (fun (a,n) -> ((100.0/.a.volume) *. n.volume -. 100.0) > 2.0 ) comparable in
+        let orientations_variations = L.filter (fun (a,n) -> let diff = a.last -. n.last |> abs_float in
+                                                          let tendance = abs_float(a.last/.100.0*.(n.last -. a.last)) in (*% augment*)
+                                                          let orientation = n.openBuyOrders - a.openBuyOrders - n.openSellOrders + a.openSellOrders in
+                                                          if orientation != 0 then Printf.printf "m=%s, diff=%f, orientation=%d, tendance=%f\n" a.marketName diff orientation tendance;
+                                                          ((abs(orientation) > 9 && tendance > 0.05) || (tendance > 0.33)) && (S.starts_with a.marketName "BTC")
+                                            ) comparable in
+        Printf.printf "orientations_variations.size = %d\n" (L.length orientations_variations);
+        let todoBurst = union vols orientations_variations |> L.unique in
+        L.iter (fun (a,n) -> Printf.printf "Candidat au burst mode le %s volume de %f à %f, prix %f à %f\n" a.marketName a.volume n.volume a.last n.last) todoBurst;
+        todoBurst
+
+
+
 let getAllMarket () =
         let data = Http_Simple.requete_get "http://bittrex.com/api/v1.1/public/getmarketsummaries" in
         let dataml = TickMarket_j.tickerResult_of_string data in
-        Printf.printf "mémoire dernierCours.size = %d, coursCourant.size = %d\n" (!maMemoire.dernierCours |> L.length) (!maMemoire.coursCourant |> L.length); 
+        Printf.printf "\nmémoire dernierCours.size = %d, coursCourant.size = %d\n" (!maMemoire.dernierCours |> L.length) (!maMemoire.coursCourant |> L.length); 
         maMemoire := { !maMemoire with dernierCours = !maMemoire.coursCourant; coursCourant = dataml.result };
         let neo = L.filter (fun d -> d.marketName = "BTC-NEO" ) dataml.result |> L.hd in
-        let compare = retComparable !maMemoire.dernierCours dataml.result in
-        let aChange = L.filter ( fun (a,n) -> String.compare n.timeStamp a.timeStamp != 0 && (n.volume != a.volume || n.openBuyOrders != a.openBuyOrders || a.last != n.last ) ) compare in
+        let comparable = retComparable !maMemoire.dernierCours dataml.result in
+        let aChange = L.filter ( fun (a,n) -> String.compare n.timeStamp a.timeStamp != 0 && (n.volume != a.volume || n.openBuyOrders != a.openBuyOrders || a.last != n.last ) ) comparable in
+        let bursts  = detectChangement comparable in
         (*TickMarket_j.string_of_compareMarkets compare |> print_endline;*)
-        L.iter (fun (a,n) -> Printf.printf "A changé le %s de %s à %s, prix %f à %f\n" a.marketName a.timeStamp n.timeStamp a.last n.last) aChange;
+        (*L.iter (fun (a,n) -> Printf.printf "A changé le %s de %s à %s, prix %f à %f\n" a.marketName a.timeStamp n.timeStamp a.last n.last) aChange;*)
         Printf.printf "Neo le %s à %f BTC\n" neo.timeStamp neo.last
         
 
@@ -75,7 +111,6 @@ let getAllMarket () =
 
 let pr_time t =
   let tm = Unix.localtime t in
-  Printf.printf "t=%f\n" t;
   Printf.printf "\x1B[8D%02d:%02d:%02d%!"
     tm.Unix.tm_hour tm.Unix.tm_min tm.Unix.tm_sec
 
