@@ -131,8 +131,11 @@ type:
 
 
 ticker : atds types
-	ocamlfind ocamlopt -c  -g  -package "react" tickerManager.ml
-	ocamlfind ocamlopt -g  -o clock -package "react,unix" -linkpkg tickerManager.cmx
+	ocamlfind ocamlopt -c  -g -warn-error "+8+11+14+20"  -thread Cowebo_Config.ml
+	ocamlfind ocamlopt -c  -g -warn-error "+8+11+14+20"  -package "netstring,netstring-pcre,cryptokit,batteries" Cowebo_Config.cmx Utils.ml		
+	ocamlfind ocamlopt -c  -g  -warn-error "+8+11+14+20" -package "netstring,netstring-pcre,netclient,batteries"  Utils.cmx *_j.cmx HttpSimple.ml
+	ocamlfind ocamlopt -c  -g  -package "react,batteries" tick*_*.cmx tickerManager.ml
+	ocamlfind ocamlopt -g  -o clock -package "react,unix,netstring,netstring-pcre,netclient,batteries,cryptokit,atdgen" -linkpkg Cowebo_Config_*.cmx tick*_*.cmx Cowebo_Config.cmx Utils.cmx HttpSimple.cmx tickerManager.cmx
 
 # Ligne de commande standard pour la compilation
 # killall clementine ; killall sign ; rm sign ; make clean ; make atds types ; make sign ; echo "flush_all" | nc  127.0.0.1 11211 ; cp sign serveur/clementine ; cd serveur/ ; ./clementine&

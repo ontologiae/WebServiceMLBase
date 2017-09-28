@@ -14,6 +14,10 @@ type tickMarket = {
 	created <json name="Created">: string;
 }
 
+
+type allMarkets = tickMarket list
+type compareMarkets = (tickMarket * tickMarket) list
+
 type tickerResult = {
 	success : bool;
 	message : string;

@@ -18,7 +18,6 @@ module H = BatHashtbl;;
 *)
 
 (***)
-let urlAlfresco = Cowebo_Config.get_val_par_cle Hostalfresco;;
 
 Printexc.record_backtrace true;;
 
@@ -29,7 +28,7 @@ let debug = true;;
 
 
 
-module Http_Cowebo =
+module Http_Simple =
 struct 
 
   (*let init () = Ssl.init() ;;*)
