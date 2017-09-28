@@ -59,9 +59,9 @@ let detectChangement comparable =
         (* Volume ++ ?*)
         let vols = L.filter (fun (a,n) -> ((100.0/.a.volume) *. n.volume -. 100.0) > 2.0 ) comparable in
         let orientations_variations = L.filter (fun (a,n) -> let diff = a.last -. n.last |> abs_float in
-                                                          let tendance = abs_float(a.last/.100.0*.(n.last -. a.last)) in (*% augment*)
+                                                          let tendance = abs_float((100./.a.last)*.diff) in (*% augment*)
                                                           let orientation = n.openBuyOrders - a.openBuyOrders - n.openSellOrders + a.openSellOrders in
-                                                          if orientation != 0 then Printf.printf "m=%s, diff=%f, orientation=%d, tendance=%f\n" a.marketName diff orientation tendance;
+                                                          if orientation != 0 then Printf.printf "m=%s, p=%f diff=%f, orientation=%d, tendance = %f = %f/100*%f\n" a.marketName a.last diff orientation tendance a.last diff;
                                                           ((abs(orientation) > 9 && tendance > 0.05) || (tendance > 0.33)) && (S.starts_with a.marketName "BTC")
                                             ) comparable in
         Printf.printf "orientations_variations.size = %d\n" (L.length orientations_variations);
