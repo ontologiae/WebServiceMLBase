@@ -33,6 +33,8 @@ type memoireGlobale = {
         mutable listCoursModeBurstNow : tickMarket list;
         mutable listCoursModeBurstPrev : tickMarket list;
         mutable modeBurstChgtCours : bool;
+        mutable appIsStarting : bool;
+        mutable listeIdMarkets : (string * string) list;
 
 }
 
@@ -44,11 +46,32 @@ let maMemoire = ref {
         listCoursModeBurstNow = [];
         listCoursModeBurstPrev = [];
         modeBurstChgtCours = false;
+        appIsStarting = true;
+        listeIdMarkets = [];
 }
 
 
-let tickerCoinsSqlInsert = "insert into tickercoin2(market,High,Low,Volume,lastv,BaseVolume,TimeStampv,Bid,Ask,cotation_dollar,OpenBuyOrders,OpenSellOrders,PrevDay)"
+let conn = BDD.connecteur ();;
 
+let tickerCoinsSqlInsert = "insert into tickercoin2(market,High,Low,Volume,lastv,BaseVolume,TimeStampw,Bid,Ask,cotation_dollar,OpenBuyOrders,OpenSellOrders,PrevDay) values "
+
+let listeMarket =
+        let (_,_,resB) = BDD.execute_requete_SQL_avec_params BDD.connections.connection_postgre "select marketName, id from marketName order by marketName" [||] in
+        L.map (fun l -> let sl = O.get l in (L.hd sl, L.at sl 1)) resB;;
+
+maMemoire := { !maMemoire with listeIdMarkets = listeMarket};;
+
+
+let getMarketIdByName name n = try 
+                                   L.find (fun (n,i) -> String.compare n name = 0 ) !maMemoire.listeIdMarkets |> snd 
+                               with Not_found -> (*Le market n'existe pas, on l'ajoute dans la liste*)
+                                                 let marketName, created = n.marketName, n.created in
+                                                 Printf.printf "marketName=%s" marketName;
+                                                 let base, monnaie = let _,r = Utils.match_regexp  "([\\w\\d]+)-([\\w\\d]+)" marketName in L.hd r, L.at r 1 in
+                                                 let reqF = Printf.sprintf "Insert into marketName(marketName, base, monnaie, created) values ('%s','%s','%s','%s'::Timestamp) returning id;" marketName base monnaie created in
+                                                 let res = BDD.execute_requete_SQL_unielement_avec_params BDD.connections.connection_postgre  reqF [||] |> snd |> O.get in
+                                                 maMemoire := { !maMemoire with listeIdMarkets = listeMarket};
+                                                 res;;
 
 let retComparable avantDernierCours cours =
         List.map (fun c -> let elem = List.find (fun e -> String.compare e.marketName c.marketName = 0) cours in (c,elem)) avantDernierCours
@@ -74,9 +97,11 @@ let detectChangement comparable =
 
 let detectChangementCours comparable = 
         let changed = L.filter (fun (a,n) ->  abs_float((100.0/.a.volume)*.(a.volume -. n.volume)) > 0.1 || ( a.last != n.last || a.ask != n.ask || a.bid = n.bid) ) comparable in
-        L.map (fun (a,n) -> Printf.sprintf "(1,%.6f,%.6f,%f,%.6f,%f,'%s'::timestamptz + interval '2 hour',%.6f,%.6f,%.6f,%d,%d,%f)" n.high n.low n.volume n.last n.baseVolume n.timeStamp n.bid n.ask 0.0 n.openBuyOrders n.openSellOrders n.prevDay) 
-                changed |> String.concat ",\n" |> Printf.printf "%s\n";
-        Printf.printf "changed= %d\n" (L.length changed);
+        let vals = (L.map (fun (a,n) -> Printf.sprintf "(%s,%.6f,%.6f,%f,%.6f,%f,'%s'::timestamptz + interval '2 hour',%.6f,%.6f,%.6f,%d,%d,%f)" (getMarketIdByName n.marketName n) n.high n.low n.volume n.last n.baseVolume n.timeStamp n.bid n.ask 0.0 n.openBuyOrders
+        n.openSellOrders n.prevDay)  changed |> (String.concat ",\n")) in
+        let sql = (tickerCoinsSqlInsert ^ vals ^ " returning tid;\n" ) in
+        let msg, lign, res = if not (!maMemoire.appIsStarting) then BDD.execute_requete_SQL_avec_params BDD.connections.connection_postgre sql [||] else "",0, [] in
+        Printf.printf "SQL(msg=%s, lign=%d), changed= %d\n" msg lign (L.length changed);
         L.iter (fun (a,n) -> Printf.printf "A pas changé : %s - volume -> %f ; last %f, ask %f, bid %f \n" a.marketName (abs_float((100.0/.a.volume)*.(a.volume -. n.volume))) n.last n.ask n.bid ) (difference comparable changed )
 
 
@@ -92,6 +117,7 @@ let getAllMarket () =
         let aChange = L.filter ( fun (a,n) -> String.compare n.timeStamp a.timeStamp != 0 && (n.volume != a.volume || n.openBuyOrders != a.openBuyOrders || a.last != n.last ) ) comparable in
         let bursts  = detectChangement comparable in
         detectChangementCours comparable;
+        if (!maMemoire.appIsStarting) then maMemoire := { !maMemoire with appIsStarting = false }; (*On viens de passer la première boucle*)
         (*TickMarket_j.string_of_compareMarkets compare |> print_endline;*)
         (*L.iter (fun (a,n) -> Printf.printf "A changé le %s de %s à %s, prix %f à %f\n" a.marketName a.timeStamp n.timeStamp a.last n.last) aChange;*)
         Printf.printf "Neo le %s à %f BTC\n" neo.timeStamp neo.last

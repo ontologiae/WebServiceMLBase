@@ -132,10 +132,21 @@ type:
 
 ticker : atds types
 	ocamlfind ocamlopt -c  -g -warn-error "+8+11+14+20"  -thread Cowebo_Config.ml
-	ocamlfind ocamlopt -c  -g -warn-error "+8+11+14+20"  -package "netstring,netstring-pcre,cryptokit,batteries" Cowebo_Config.cmx Utils.ml		
+	ocamlfind ocamlopt -c  -g -warn-error "+8+11+14+20"  -package "netstring,netstring-pcre,cryptokit,batteries" Cowebo_Config.cmx Utils.ml
+	ocamlfind ocamlopt -c  -g -warn-error "+8+11+14+20"  -thread Cowebo_Config.cmx Utils.cmx  Memcache.ml	
+	ocamlfind ocamlopt -c  -g -warn-error "+11+14+20"  -package "postgresql,cryptokit,batteries" -thread Cowebo_Config_t.cmx Cowebo_Config_j.cmx Memcache.cmx Cowebo_Config.cmx  BDD.ml
 	ocamlfind ocamlopt -c  -g  -warn-error "+8+11+14+20" -package "netstring,netstring-pcre,netclient,batteries"  Utils.cmx *_j.cmx HttpSimple.ml
-	ocamlfind ocamlopt -c  -g  -package "react,batteries" tick*_*.cmx tickerManager.ml
-	ocamlfind ocamlopt -g  -o clock -package "react,unix,netstring,netstring-pcre,netclient,batteries,cryptokit,atdgen" -linkpkg Cowebo_Config_*.cmx tick*_*.cmx Cowebo_Config.cmx Utils.cmx HttpSimple.cmx tickerManager.cmx
+	ocamlfind ocamlopt -c  -g  -package "react,batteries" tick*_*.cmx BDD.cmx tickerManager.ml
+	ocamlfind ocamlopt -g  -o clock -thread -package "react,unix,netstring,netstring-pcre,netclient,batteries,cryptokit,atdgen,postgresql" -linkpkg Cowebo_Config_*.cmx tick*_*.cmx Cowebo_Config.cmx Utils.cmx Memcache.cmx BDD.cmx HttpSimple.cmx tickerManager.cmx
+
+
+topticker : atds typesbyte
+	ocamlfind ocamlc -c  -g -warn-error "+8+11+14+20"  -thread Cowebo_Config.ml
+	ocamlfind ocamlc -c  -g -warn-error "+8+11+14+20"  -package "netstring,netstring-pcre,cryptokit,batteries" Cowebo_Config.cmo Utils.ml
+	ocamlfind ocamlc -c  -g -thread	Cowebo_Config.cmo Utils.cmo  Memcache.ml
+	ocamlfind ocamlc -c  -g  -package "postgresql,cryptokit,batteries" -thread Cowebo_Config_t.cmo Cowebo_Config_j.cmo Memcache.cmo Cowebo_Config.cmo  BDD.ml
+	ocamlfind ocamlc -c  -g  -warn-error "+8+11+14+20" -package "netstring,netstring-pcre,netclient,batteries"  Utils.cmo *_j.cmo HttpSimple.ml
+	utop -init topTick.ml
 
 # Ligne de commande standard pour la compilation
 # killall clementine ; killall sign ; rm sign ; make clean ; make atds types ; make sign ; echo "flush_all" | nc  127.0.0.1 11211 ; cp sign serveur/clementine ; cd serveur/ ; ./clementine&

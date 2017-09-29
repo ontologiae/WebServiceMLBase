@@ -21,7 +21,8 @@ let connecteur () =
   try new Postgresql.connection ~host:(Cowebo_Config.get_val_par_cle Bddhote)
         ~dbname:(Cowebo_Config.get_val_par_cle Bddnombase)
         ~user:(Cowebo_Config.get_val_par_cle Bdduser)
-        ~password:(Cowebo_Config.get_val_par_cle Bddpass) () 
+        ~password:(Cowebo_Config.get_val_par_cle Bddpass)
+        ~port:"5433" () 
   with Postgresql.Error a -> Utils.erreur ("Erreur lors de la connexion à la base Postgresql "^(Printexc.get_backtrace ())^";"^(Postgresql.string_of_error a)); raise (Postgresql.Error a);;
 (*TODO TODO : Inutile, pgbounce fera mieux*)
 
@@ -321,88 +322,6 @@ let getIdUser s = match s with
 
 (*********** Fonction exécutant des requêtes en base *********)
 
-(** Crée un user société en base*)
-let pl_creer_user_societe login_societe users_nodeid =
-        let conn = connections.connection_postgre in
-        let _,id = execute_requete_SQL_unielement_avec_params conn "select id_cwb_user from cwb_users where cwb_user = $1" [|login_societe|] in
-        (*On insert dans la table uniquement si l'id user existe*)
-        let crer = match id with
-        | Some i -> execute_requete_SQL_unielement_avec_params conn  "insert into cwb_societes(id_user,users_nodeid) values ($1,$2);" [|i;users_nodeid|]
-        | None   -> Utils.erreur "Erreur création société" ; failwith "Erreur création société" in
-        crer
-
-(** Récupère le nodeid de l'espace société pour un utilisateur*)
-let pl_get_nodeid_users_pour_societe loginSoc =
-        let conn = connections.connection_postgre in
-        (*On cherche le nodeid du répertoire contenant les userhome des utilisateurs de la société à laquelle appartient l'utilisateur donné en paramètre*)
-        let _,id = execute_requete_SQL_unielement_avec_params conn "select users_nodeid from cwb_societes s inner join cwb_users u on (u.id_cwb_user = s.id_user) where u.cwb_user = $1" [|loginSoc|] in
-        let nid = match id with
-        | Some i -> i
-        | None   -> Utils.erreur "Erreur recherche société" ; failwith "Erreur recherche société" in
-        nid
-
-(** Renvoi tous les message liés à un nodeid*)
-let pl_tous_les_msgs_de_nodeid nodeid = 
-  let conn = connections.connection_postgre in
-  let err,_,msgs = execute_requete_SQL_avec_params conn "select id_chat, msg from cwb_chat where nodeid = $1;" [|nodeid|] in
-  let res_msgs = match msgs with
-    | []     -> [] 
-    | [None] -> []
-    (*En renvoi la liste de couple id_chat, contenu du message*)
-    |  l     -> L.map (fun e -> let m = O.default ["";""] e in (L.hd m, (TypesMandarine_j.msg_of_string (L.nth m 1)) )) l in
-  res_msgs 
-
-
-
-(** Update en base le nombre de signature pour gérer les quota*)
-let pl_update_nombre_signature login nombre =
-  let conn = connections.connection_postgre in
-  let _,id = execute_requete_SQL_unielement_avec_params conn "update cwb_users set nombre_signatures_restantes=$1 where cwb_user = $2" [|string_of_int nombre;login|] in
-  ()
-
-(** Renvoi le nombre e signature restant dans le quota*)
-let pl_compte_nombre_signatures_restantes_autorisees structure_utilisateur =
-  let conn = connections.connection_postgre in
-  let _,id = execute_requete_SQL_unielement_avec_params conn "select nombre_signatures_restantes from cwb_users where cwb_user = $1" [|structure_utilisateur.cwbuser|] in
-  let nbr = match id with
-    | Some i -> i
-    | None   -> Utils.erreur "Erreur pl_compte_nombre_signatures_restantes_autorisees" ; failwith "Erreur pl_compte_nombre_signatures_restantes_autorisees" in
-  nbr
-
-
-(** Décrémente le crédit signature d'un utilisateur*)
-let pl_decremente_credit_signature_utilisateur structure_utilisateur =      
-  let conn = connections.connection_postgre in
-  (* Décrémente le crédit signature en décrémentant le crédit utilisateur, mais aussi en décrémentant le crédit globale de la société.*)
-  let _,id = execute_requete_SQL_unielement_avec_params conn "update  cwb_users set nombre_signatures_restantes =  nombre_signatures_restantes-1  where nombre_signatures_restantes > 0 and 
-        id_cwb_user = $1 returning nombre_signatures_restantes;" [|structure_utilisateur.userID|] in
-  match id with
-    | Some i -> (*Signature possible et décrémentation effectuée*)
-        let _,id2 =   execute_requete_SQL_unielement_avec_params conn "update  cwb_societes s set credits_signature =  credits_signature-1  
-                                                                                        from cwb_users u
-                                                                                        where credits_signature > 0 and 
-                                                                                        u.id_societe = s.id_societe
-                                                                                and u.id_cwb_user = $1
-                                                                                returning credits_signature;" [|structure_utilisateur.userID|] in
-        (
-          match id2 with
-            | Some nbsign  -> true
-            | None         -> Utils.erreur "Comptes signatures  société et user incohérents !!!"; false 
-        )
-    | None   -> false
-
-
-(** vérifie qu'on a le droit de signer en fonction du nombre de signature restante pour l'utilisateur*)
-let pl_check_coherence_signature () =
-  let conn = connections.connection_postgre in
-  let _,t,res = execute_requete_SQL_avec_params conn "select sum(u.nombre_signatures_restantes) as somme, s.credits_signature
-                                                                          from  
-                                                                        cwb_users u inner join cwb_societes s on (s.id_societe = u.id_societe)
-                                                                        group by s.credits_signature" [||] 
-  in match res with
-    | []     -> [] (*Tout va bien !*)
-    | [None] -> []
-    |  l     -> L.map (fun e -> let m = O.default ["";""] e in (L.hd m, L.nth m 1) ) l 
 
 
 (****************************************************************************)
@@ -433,46 +352,6 @@ let get_login_from_email email =
   match res with
     | None     -> Utils.erreur ("Utilisateur inexistant pour l'email '"^email^"'"); "NoneUtilisateurInexistant"
     | Some a   -> L.hd a  
-
-
-(*1. On vérifie que le cercle *)
-
-
-
-
-(** @return alf_user,alf_pass,nodeIDDossierPartage du login donné en argument*)
-let get_alfLogPass_NodeIDDossierPartage_from_Login connexion_postgresql login =
-  let req_id_utilis  = "select alf_user,alf_pass,nodeIDDossierPartage from cwb_users where cwb_user = $1;" in
-  (*1. On vérifie que le cercle n'existe pas *)
-  let user_id u = 
-    let (err,taille,res) =  (execute_requete_SQL_uniligne_avec_params connexion_postgresql req_id_utilis [|u|]) in
-    match res with
-      | None     -> Utils.erreur ("getAlfLogPassFromLogin - Erreur anormale : utilisateur inexistant ="^u); 
-          ("-1","","")
-      | Some a       -> let resultats = getOrElse res ["";"";""]  in 
-                        (L.hd resultats, L.nth resultats 1, L.nth resultats 2)
-  in user_id login;;
-
-(** Renvoi l'id d'un dossier à partir de son nodeid*)
-let get_iddossier_nom_from_nodeid_dossier nodeid_dossier =
-        let conn           = connections.connection_postgre  in
-        let check_is_nodeid = match  S.length nodeid_dossier = 36 with (* Vu que BDD ne dépend pas de AlfrescoTalking, on ne peut pas l'utiliser. Donc on inline le code de fast_est_un_nodeID
-                                                                         * Un nodeid doit faire 36 caractères*)
-                               | true  -> () 
-                               | false -> let msg = "get_iddossier_from_nodeid_dossier - Erreur anormale : nodeid_dossier non valide"^nodeid_dossier in
-                                                Utils.erreur msg ; failwith msg in
-        let req            = "select id_dossier,nom_dossier from cwb_dossiers where nodeid = $1" in
-        let dossier_id nodeid = 
-                let (err,_,res) =  (execute_requete_SQL_uniligne_avec_params conn req [|nodeid|]) in
-                match res with
-                | None     -> 
-                                let _ = Utils.erreur ("get_iddossier_from_nodeid_dossier - Erreur anormale de retour de la requête : nodeid_dossier non enregistré  ="^nodeid_dossier) in
-                                        "-1", "NONAME"
-                | Some a   ->   L.hd a, (L.at a 1) in
-        dossier_id nodeid_dossier
-
-
-
 
 
 
