@@ -47,6 +47,8 @@ let maMemoire = ref {
 }
 
 
+let tickerCoinsSqlInsert = "insert into tickercoin2(market,High,Low,Volume,lastv,BaseVolume,TimeStampv,Bid,Ask,cotation_dollar,OpenBuyOrders,OpenSellOrders,PrevDay)"
+
 
 let retComparable avantDernierCours cours =
         List.map (fun c -> let elem = List.find (fun e -> String.compare e.marketName c.marketName = 0) cours in (c,elem)) avantDernierCours
@@ -61,13 +63,22 @@ let detectChangement comparable =
         let orientations_variations = L.filter (fun (a,n) -> let diff = a.last -. n.last |> abs_float in
                                                           let tendance = abs_float((100./.a.last)*.diff) in (*% augment*)
                                                           let orientation = n.openBuyOrders - a.openBuyOrders - n.openSellOrders + a.openSellOrders in
-                                                          if orientation != 0 then Printf.printf "m=%s, p=%f diff=%f, orientation=%d, tendance = %f = %f/100*%f\n" a.marketName a.last diff orientation tendance a.last diff;
-                                                          ((abs(orientation) > 9 && tendance > 0.05) || (tendance > 0.33)) && (S.starts_with a.marketName "BTC")
+                                                          (*if orientation != 0 then Printf.printf "m=%s, p=%f diff=%f, orientation=%d, tendance = %f = %f/100*%f\n" a.marketName a.last diff orientation tendance a.last diff;*)
+                                                          ((abs(orientation) > 9 && tendance > 0.15) || (tendance > 0.33)) && (S.starts_with a.marketName "BTC")
                                             ) comparable in
         Printf.printf "orientations_variations.size = %d\n" (L.length orientations_variations);
         let todoBurst = union vols orientations_variations |> L.unique in
         L.iter (fun (a,n) -> Printf.printf "Candidat au burst mode le %s volume de %f à %f, prix %f à %f\n" a.marketName a.volume n.volume a.last n.last) todoBurst;
         todoBurst
+
+
+let detectChangementCours comparable = 
+        let changed = L.filter (fun (a,n) ->  abs_float((100.0/.a.volume)*.(a.volume -. n.volume)) > 0.1 || ( a.last != n.last || a.ask != n.ask || a.bid = n.bid) ) comparable in
+        L.map (fun (a,n) -> Printf.sprintf "(1,%.6f,%.6f,%f,%.6f,%f,'%s'::timestamptz + interval '2 hour',%.6f,%.6f,%.6f,%d,%d,%f)" n.high n.low n.volume n.last n.baseVolume n.timeStamp n.bid n.ask 0.0 n.openBuyOrders n.openSellOrders n.prevDay) 
+                changed |> String.concat ",\n" |> Printf.printf "%s\n";
+        Printf.printf "changed= %d\n" (L.length changed);
+        L.iter (fun (a,n) -> Printf.printf "A pas changé : %s - volume -> %f ; last %f, ask %f, bid %f \n" a.marketName (abs_float((100.0/.a.volume)*.(a.volume -. n.volume))) n.last n.ask n.bid ) (difference comparable changed )
+
 
 
 
@@ -80,6 +91,7 @@ let getAllMarket () =
         let comparable = retComparable !maMemoire.dernierCours dataml.result in
         let aChange = L.filter ( fun (a,n) -> String.compare n.timeStamp a.timeStamp != 0 && (n.volume != a.volume || n.openBuyOrders != a.openBuyOrders || a.last != n.last ) ) comparable in
         let bursts  = detectChangement comparable in
+        detectChangementCours comparable;
         (*TickMarket_j.string_of_compareMarkets compare |> print_endline;*)
         (*L.iter (fun (a,n) -> Printf.printf "A changé le %s de %s à %s, prix %f à %f\n" a.marketName a.timeStamp n.timeStamp a.last n.last) aChange;*)
         Printf.printf "Neo le %s à %f BTC\n" neo.timeStamp neo.last
@@ -126,7 +138,7 @@ let seconds, minute, run =
   let e, send = E.create () in
   let e2, send2 = E.create() in
   let run () = while true do 
-          if (Unix.gettimeofday () |> int_of_float) mod 10 = 0 then send2 (Unix.gettimeofday ()) else send (Unix.gettimeofday ()); 
+          if (Unix.gettimeofday () |> int_of_float) mod 20 = 0 then send2 (Unix.gettimeofday ()) else send (Unix.gettimeofday ()); 
           Unix.sleep 1;
   done in
   e, e2, run 
