@@ -97,7 +97,7 @@ let detectChangement comparable =
 
 let detectChangementCours comparable = 
         let changed = L.filter (fun (a,n) ->  abs_float((100.0/.a.volume)*.(a.volume -. n.volume)) > 0.1 || ( a.last != n.last || a.ask != n.ask || a.bid = n.bid) ) comparable in
-        let vals = (L.map (fun (a,n) -> Printf.sprintf "(%s,%.6f,%.6f,%f,%.6f,%f,'%s'::timestamptz + interval '2 hour',%.6f,%.6f,%.6f,%d,%d,%f)" (getMarketIdByName n.marketName n) n.high n.low n.volume n.last n.baseVolume n.timeStamp n.bid n.ask 0.0 n.openBuyOrders
+        let vals = (L.map (fun (a,n) -> Printf.sprintf "(%s,%.9f,%.9f,%f,%.9f,%f,'%s'::timestamptz + interval '2 hour',%.9f,%.9f,%.9f,%d,%d,%f)" (getMarketIdByName n.marketName n) n.high n.low n.volume n.last n.baseVolume n.timeStamp n.bid n.ask 0.0 n.openBuyOrders
         n.openSellOrders n.prevDay)  changed |> (String.concat ",\n")) in
         let sql = (tickerCoinsSqlInsert ^ vals ^ " returning tid;\n" ) in
         let msg, lign, res = if not (!maMemoire.appIsStarting) then BDD.execute_requete_SQL_avec_params BDD.connections.connection_postgre sql [||] else "",0, [] in
