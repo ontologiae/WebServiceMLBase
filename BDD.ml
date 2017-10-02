@@ -22,7 +22,7 @@ let connecteur () =
         ~dbname:(Cowebo_Config.get_val_par_cle Bddnombase)
         ~user:(Cowebo_Config.get_val_par_cle Bdduser)
         ~password:(Cowebo_Config.get_val_par_cle Bddpass)
-        ~port:"5433" () 
+        ~port:"5432" () 
   with Postgresql.Error a -> Utils.erreur ("Erreur lors de la connexion à la base Postgresql "^(Printexc.get_backtrace ())^";"^(Postgresql.string_of_error a)); raise (Postgresql.Error a);;
 (*TODO TODO : Inutile, pgbounce fera mieux*)
 

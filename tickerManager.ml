@@ -109,18 +109,20 @@ let detectChangementCours comparable =
 
 let getAllMarket () =
         let data = Http_Simple.requete_get "http://bittrex.com/api/v1.1/public/getmarketsummaries" in
-        let dataml = TickMarket_j.tickerResult_of_string data in
-        Printf.printf "\nmémoire dernierCours.size = %d, coursCourant.size = %d\n" (!maMemoire.dernierCours |> L.length) (!maMemoire.coursCourant |> L.length); 
-        maMemoire := { !maMemoire with dernierCours = !maMemoire.coursCourant; coursCourant = dataml.result };
-        let neo = L.filter (fun d -> d.marketName = "BTC-NEO" ) dataml.result |> L.hd in
-        let comparable = retComparable !maMemoire.dernierCours dataml.result in
-        let aChange = L.filter ( fun (a,n) -> String.compare n.timeStamp a.timeStamp != 0 && (n.volume != a.volume || n.openBuyOrders != a.openBuyOrders || a.last != n.last ) ) comparable in
-        let bursts  = detectChangement comparable in
-        detectChangementCours comparable;
-        if (!maMemoire.appIsStarting) then maMemoire := { !maMemoire with appIsStarting = false }; (*On viens de passer la première boucle*)
-        (*TickMarket_j.string_of_compareMarkets compare |> print_endline;*)
-        (*L.iter (fun (a,n) -> Printf.printf "A changé le %s de %s à %s, prix %f à %f\n" a.marketName a.timeStamp n.timeStamp a.last n.last) aChange;*)
-        Printf.printf "Neo le %s à %f BTC\n" neo.timeStamp neo.last
+        try
+                let dataml = TickMarket_j.tickerResult_of_string data in
+                Printf.printf "\nmémoire dernierCours.size = %d, coursCourant.size = %d\n" (!maMemoire.dernierCours |> L.length) (!maMemoire.coursCourant |> L.length); 
+                maMemoire := { !maMemoire with dernierCours = !maMemoire.coursCourant; coursCourant = dataml.result };
+                let neo = L.filter (fun d -> d.marketName = "BTC-NEO" ) dataml.result |> L.hd in
+                let comparable = retComparable !maMemoire.dernierCours dataml.result in
+                let aChange = L.filter ( fun (a,n) -> String.compare n.timeStamp a.timeStamp != 0 && (n.volume != a.volume || n.openBuyOrders != a.openBuyOrders || a.last != n.last ) ) comparable in
+                let bursts  = detectChangement comparable in
+                detectChangementCours comparable;
+                if (!maMemoire.appIsStarting) then maMemoire := { !maMemoire with appIsStarting = false }; (*On viens de passer la première boucle*)
+                (*TickMarket_j.string_of_compareMarkets compare |> print_endline;*)
+                (*L.iter (fun (a,n) -> Printf.printf "A changé le %s de %s à %s, prix %f à %f\n" a.marketName a.timeStamp n.timeStamp a.last n.last) aChange;*)
+                Printf.printf "Neo le %s à %f BTC\n" neo.timeStamp neo.last
+        with e -> Printf.printf "Erreur durant l'exec : %s" (Printexc.get_backtrace ())
         
 
 
